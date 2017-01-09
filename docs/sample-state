@@ -59,33 +59,49 @@
       end: "2/10/2017"
     }
   },
-  host_reviews: {
-    1: {
-      id: 1,
-      user_id: 4,
-      host_id: 2,
-      rating: 5,
-      review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
-    },
-    2: {
-      id: 2,
-      user_id: 5,
-      host_id: 2,
-      rating: 5,
-      review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
-    },
-    3: {
-      id: 3,
-      user_id: 10,
-      host_id: 2,
-      rating: 3,
-      review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+  host: {
+    id: 3,
+    username: "other user",
+    address: "100 spear street",
+    city: "San Francisco",
+    state: "CA",
+    zip: "94105",
+    status: "Accepting",
+    age: "20",
+    sex: "F",
+    profile: "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+    reprehenderit in voluptate velit esse cillum dolore eu fugiat.",
+    reviews: {
+      1: {
+        id: 1,
+        user_id: 4,
+        host_id: 2,
+        rating: 5,
+        review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      },
+      2: {
+        id: 2,
+        user_id: 5,
+        host_id: 2,
+        rating: 5,
+        review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      },
+      3: {
+        id: 3,
+        user_id: 10,
+        host_id: 2,
+        rating: 3,
+        review: "Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      }
     }
   }
 }
