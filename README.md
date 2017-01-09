@@ -34,19 +34,19 @@ and React/Redux.
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and Front End User Authentication (2 days)
+### Phase 1: Backend setup and Front End User Authentication (2 days - W1D2)
 **Objective:** Functioning rails project with front-end Authentication
 
-### Phase 2: Cats (2 days)
+### Phase 2: Cats (2 days - W1D4)
 **Objective:** All Users should have cats assigned to them if they have any.
 
-### Phase 3: Searching (3 days)
+### Phase 3: Searching (3 days - W2D2)
 **Objective:** Can search for users around a specific location. Show locations on Google maps
 
-### Phase 4: Bookings (2 days)
+### Phase 4: Bookings (2 days - W2D4)
 **Objective:** Can view a host and can book an owned cat to the host.
 
-### Phase 5: Reviews (2 days)
+### Phase 5: Reviews (1 days - W2D5)
 **Objective:** Allows current user to write reviews to hosts and to see own reviews.
 
 
