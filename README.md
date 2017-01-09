@@ -5,7 +5,7 @@
 [Trello link][trello]
 
 [heroku]: #
-[trello]: #
+[trello]: https://trello.com/b/RUhWmX0p/catsurfing
 
 ## Minimum Viable Product
 
@@ -14,9 +14,9 @@ and React/Redux.
 
 - [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
-- [ ] Spots
+- [ ] Cats and their association to users
+- [ ] Host search + Google maps
 - [ ] Bookings
-- [ ] Spots search (by location & availability) & Google Maps on search
 - [ ] Reviews
 - [ ] Production README [sample](docs/production_readme.md)
 
