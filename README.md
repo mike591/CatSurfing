@@ -12,7 +12,6 @@
 CatSurfing is a web application inspired by CouchSurfing built using Ruby on Rails
 and React/Redux.
 
-- [ ] Hosting on Heroku
 - [ ] New account creation, login, and guest/demo login
 - [ ] Cats and their association to users
 - [ ] Host search + Google maps
