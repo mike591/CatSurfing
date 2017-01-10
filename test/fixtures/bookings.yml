@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cat_id: 1
+  host_id: 1
+  start: 2017-01-10
+  end: 2017-01-10
+
+two:
+  cat_id: 1
+  host_id: 1
+  start: 2017-01-10
+  end: 2017-01-10
