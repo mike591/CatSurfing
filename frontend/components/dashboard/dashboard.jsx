@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -10,7 +10,9 @@ class Dashboard extends React.Component {
 
   logout(e) {
     e.preventDefault();
-    this.props.logout();
+    this.props.logout().then(() => (
+      hashHistory.push("/")
+    ))
   }
 
   render() {
@@ -18,6 +20,7 @@ class Dashboard extends React.Component {
     return(
       <div>
         <h1>Dashboard</h1>
+        <button onClick={this.logout}>Log Out</button>
       </div>
     )
   }

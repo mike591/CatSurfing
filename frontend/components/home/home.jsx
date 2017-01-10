@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class Home extends React.Component {
   constructor(props) {
@@ -7,17 +8,17 @@ class Home extends React.Component {
 
   render() {
     return(
-      <div class="home-page">
-        <div class="home-page-header">Header
+      <div className="home-page">
+        <div className="home-page-header">Header
           <Link to='/login'>Login</Link>
           <Link to='/signup'>Sign Up</Link>
         </div>
 
-        <div class="home-page-main">
+        <div className="home-page-main">
           Main
         </div>
 
-        <div class="home-page-desc">
+        <div className="home-page-desc">
           Description
         </div>
       </div>
