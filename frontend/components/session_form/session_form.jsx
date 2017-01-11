@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
+    this.handleGuest = this.handleGuest.bind(this);
   }
 
   handleSubmit(e) {
@@ -35,6 +36,12 @@ class SessionForm extends React.Component {
     this.setState({password: password});
   }
 
+  handleGuest(e) {
+    e.preventDefault();
+    this.props.login({username: "Guest", password: "password"})
+      .then((res) => this.props.router.push('/dashboard') )
+  }
+
   render() {
     let link = (this.props.formType === 'login') ? '/signup' : '/login'
     let linkTitle = link.slice(1);
@@ -43,21 +50,39 @@ class SessionForm extends React.Component {
     });
 
     return (
-      <div>
-        <h1>{this.props.formType}</h1>
-        <br></br>
+      <div className='session-page'>
+        <div className="session-page-header">
+          <h1>
+            <Link to='/'>
+              CatSurfing
+            </Link>
+          </h1>
 
-        Username: <input onChange={this.handleUsername} type='text'></input>
-        <br></br>
-        Password: <input onChange={this.handlePassword} type='text'></input>
-        <br></br>
-        <button onClick={this.handleSubmit}>Submit!</button>
-        <br></br>
-        <br></br>
-        <Link to={link}>{linkTitle}</Link>
-        <ul>
-          {errors}
-        </ul>
+          <ul>
+            <li><Link to='/login'>Login</Link></li>
+            <li><Link to='/signup'>Sign Up</Link></li>
+            <li><a href='#' onClick={this.handleGuest}>Guests</a></li>
+          </ul>
+        </div>
+
+        <div className='session-page-form-container'>
+          <div className='session-page-form'>
+            <h1>{this.props.formType}</h1>
+            <br></br>
+            <form onSubmit={this.handleSubmit}>
+              Username: <input onChange={this.handleUsername} type='text'></input>
+              <br></br>
+              Password: <input onChange={this.handlePassword} type='password'></input>
+              <br></br>
+              <input type='submit' value='Submit'/>
+            </form>
+            <br></br>
+            <br></br>
+            <ul>
+              {errors}
+            </ul>
+          </div>
+        </div>
       </div>
     )
   }

@@ -53,3 +53,11 @@ and React/Redux.
 ### Bonus Features (TBD)
 - [ ] Messaging
 - [ ] User/host profiles
+
+<!-- TODO
+  credit:
+  https://www.pexels.com/photo/tabby-cat-side-view-26511/
+
+  https://color.adobe.com/create/color-wheel/?base=2&rule=Compound&selected=4&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.7113368983957149,0.6454411764705883,0.7411764705882353,0.46878533231472685,0.30892156862745096,0.5411764705882353,0.9176470588235294,0.9137254901960784,0.9411764705882353,0.9485294117647058,0.887770317300298,0.6837316176470588,0.7411764705882353,0.7095588235293846,0.6454411764705883&swatchOrder=0,1,2,3,4
+  
+ -->

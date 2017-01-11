@@ -1,8 +1,7 @@
 import React from 'react';
 
 const App = ({ children }) => (
-  <div>
-    <h1>CatSurfing!</h1>
+  <div className='app'>
     { children }
   </div>
 );

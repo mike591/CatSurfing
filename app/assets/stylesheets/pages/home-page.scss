@@ -1,0 +1,101 @@
+.home-page {
+  height: 100%;
+}
+
+.home-page-header {
+  height: 7%;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.home-page-header > h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $large-font;
+}
+
+.home-page-header > ul {
+  display: flex;
+}
+
+.home-page-header > ul > li {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid $color1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page-header > ul > li :hover {
+  opacity: 0.7;
+}
+
+.home-page-main {
+  height: 55%;
+  background-image: url(/assets/main-cats.png);
+  background-size:cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page-main p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: $extra-large-font;
+  color: $color2;
+  font-weight: bold;
+  text-shadow: 2px 2px $color3;
+}
+
+.home-page-main ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page-main ul li {
+  padding: 10px;
+  margin: 10px;
+  background-color: $color2;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: $color3;
+	box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
+}
+
+.home-page-main > ul > li :hover {
+  opacity: 0.7;
+}
+
+.home-page-desc {
+  height: 30%;
+  background-color: $color5;
+  padding: 25px;
+}
+
+.home-page-desc h1 {
+  padding: 10px;
+  font-size: $large-font;
+  color: white;
+  text-shadow: 1px 1px $color1;
+}
+
+.home-page-desc p {
+  padding: 10px;
+  font-size: $normal-font;
+  color: white;
+  text-shadow: 1px 1px $color1;
+}
