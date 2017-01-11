@@ -41,8 +41,12 @@
   background-size:cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+}
+
+.home-page-main-content {
+  padding-left: 10%;
 }
 
 .home-page-main p {
@@ -76,7 +80,7 @@
 	box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
 }
 
-.home-page-main > ul > li :hover {
+.home-page-main > div > ul > li :hover {
   opacity: 0.7;
 }
 

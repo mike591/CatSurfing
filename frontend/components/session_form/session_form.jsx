@@ -7,12 +7,16 @@ class SessionForm extends React.Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      email: "",
+      address: "",
+      city: "",
+      state: "",
+      zip: ""
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUsername = this.handleUsername.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
+    this.update = this.update.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
   }
 
@@ -26,14 +30,10 @@ class SessionForm extends React.Component {
     this.props.router.push('/');
   }
 
-  handleUsername(e) {
-    let username = e.target.value;
-    this.setState({username: username});
-  }
-
-  handlePassword(e) {
-    let password = e.target.value;
-    this.setState({password: password});
+  update(field) {
+    return (e) => {
+      this.setState({[field]: e.target.value});
+    };
   }
 
   handleGuest(e) {
@@ -51,7 +51,7 @@ class SessionForm extends React.Component {
 
     return (
       <div className='session-page'>
-        <div className="session-page-header">
+        <div className="home-page-header">
           <h1>
             <Link to='/'>
               CatSurfing
@@ -70,10 +70,40 @@ class SessionForm extends React.Component {
             <h1>{this.props.formType}</h1>
             <br></br>
             <form onSubmit={this.handleSubmit}>
-              Username: <input onChange={this.handleUsername} type='text'></input>
+              <label> Username:
+                <input onChange={this.update('username')} type='text'></input>
+              </label>
               <br></br>
-              Password: <input onChange={this.handlePassword} type='password'></input>
+              <label> Password:
+                <input onChange={this.update('password')} type='password'></input>
+              </label>
               <br></br>
+
+              <label> Email:
+                <input onChange={this.update('email')} type='text'></input>
+              </label>
+              <br></br>
+
+              <label> Address:
+                <input onChange={this.update('address')} type='text'></input>
+              </label>
+              <br></br>
+
+              <label> City:
+                <input onChange={this.update('city')} type='text'></input>
+              </label>
+              <br></br>
+
+              <label> State:
+                <input onChange={this.update('state')} type='text'></input>
+              </label>
+              <br></br>
+
+              <label> Zip:
+                <input onChange={this.update('zip')} type='text'></input>
+              </label>
+              <br></br>
+
               <input type='submit' value='Submit'/>
             </form>
             <br></br>
@@ -82,6 +112,13 @@ class SessionForm extends React.Component {
               {errors}
             </ul>
           </div>
+        </div>
+
+        <div className="home-page-desc">
+          <h1>CatSurfing is...</h1>
+          <p>A website dedicated to the happiness of cats. Users can send cats
+            to a friend anywhere across the globe! Users can also offer to host
+            any cats curious enough to visit your part of the world.</p>
         </div>
       </div>
     )

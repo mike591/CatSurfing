@@ -37,12 +37,14 @@ class Home extends React.Component {
         </div>
 
         <div className="home-page-main">
-          <p>Let your cats travel the world!</p>
-          <ul>
-            <li><Link to='/login'>Login</Link></li>
-            <li><Link to='/signup'>Sign Up</Link></li>
-            <li><a href='#' onClick={this.handleGuest}>Guests</a></li>
-          </ul>
+          <div className="home-page-main-content">
+            <p>Let your cats travel the world!</p>
+            <ul>
+              <li><Link to='/login'>Login</Link></li>
+              <li><Link to='/signup'>Sign Up</Link></li>
+              <li><a href='#' onClick={this.handleGuest}>Guests</a></li>
+            </ul>
+          </div>
         </div>
 
         <div className="home-page-desc">

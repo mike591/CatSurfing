@@ -3,52 +3,31 @@
   height: inherit;
 }
 
+// Header located css located in home-page.scss
 
 .session-page-form-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 25%;
   width: inherit;
-  height: 50%;
+  height: 55%;
+  background-image: url(/assets/main-cats.png);
+  background-size: cover;
+}
+
+.session-page-form {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 25px;
+  width: 300px;
+  height: 300px;
+  align-self: center;
+  background-color: $color1;
+  opacity: .9;
 }
 
 .session-page-form h1 {
   font-size: $large-font;
 }
 
-.session-page-form {
-  border: 1px solid black;
-  padding: 25px;
-  width: 300px;
-  height: 300px;
-  align-self: center;
-}
-
-.session-page-header {
-  height: 7%;
-  border: 1px solid green;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.session-page-header > h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $large-font;
-}
-
-.session-page-header > ul {
-  display: flex;
-}
-
-.session-page-header > ul > li {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid $color1;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+// Description container located in home-page.scss
