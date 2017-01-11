@@ -17,22 +17,25 @@
   font-size: $large-font;
 }
 
-.home-page-header > ul {
+.home-page-header  ul {
   display: flex;
 }
 
-.home-page-header > ul > li {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid $color1;
+.home-page-header  ul  li {
+  padding: 15px;
+  margin: 15px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color .2s;
+  background-color: $color2;
+  color: white;
 }
 
-.home-page-header > ul > li :hover {
-  opacity: 0.7;
+.home-page-header  ul  li:hover {
+  background-color: $color4;
+  color: black;
 }
 
 .home-page-main {
@@ -70,18 +73,24 @@
   padding: 10px;
   margin: 10px;
   background-color: $color2;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
 	font-weight: bold;
 	text-transform: uppercase;
 	color: $color3;
-	box-shadow: 0 1px 0 #666, 0 5px 0 #444, 0 6px 6px rgba(0,0,0,0.6);
+  transition: background-color .2s;
 }
 
-.home-page-main > div > ul > li :hover {
+.home-page-main  div  ul  li:hover {
   opacity: 0.7;
+  background-color: $color4;
+  color: black;
+}
+
+.home-page-main  div  ul  li:active {
+  opacity: 0.2;
 }
 
 .home-page-desc {

@@ -9,7 +9,6 @@ class Home extends React.Component {
     this.state = {
       showForm: false
     }
-
     this.handleGuest = this.handleGuest.bind(this);
   }
 

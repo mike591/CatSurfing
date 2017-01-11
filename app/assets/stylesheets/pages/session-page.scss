@@ -20,14 +20,51 @@
   border-radius: 5px;
   padding: 25px;
   width: 300px;
-  height: 300px;
   align-self: center;
   background-color: $color1;
   opacity: .9;
 }
 
+.session-page-form input {
+  font-size: $normal-font;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.session-page-form input[type=submit] {
+    font-size: $normal-font;
+    background: $color4;
+    border: none;
+    cursor: pointer;
+    margin-top: 5%;
+    border-radius: 5px;
+    transition: background-color .2s;
+}
+
+.session-page-form input[type=submit]:hover {
+    background: $color3;
+}
+
+.session-page-form input[type=submit]:active {
+  background: $color2;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  padding: 5px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  padding: 5px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  padding: 5px;
+}
+:-moz-placeholder { /* Firefox 18- */
+  padding: 5px;
+}
+
 .session-page-form h1 {
   font-size: $large-font;
+  text-transform: uppercase;
 }
 
 // Description container located in home-page.scss

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
+    this.removeErrors = this.removeErrors.bind(this);
   }
 
   handleSubmit(e) {
@@ -42,9 +43,11 @@ class SessionForm extends React.Component {
       .then((res) => this.props.router.push('/dashboard') )
   }
 
+  removeErrors() {
+    this.props.removeErrors();
+  }
+
   render() {
-    let link = (this.props.formType === 'login') ? '/signup' : '/login'
-    let linkTitle = link.slice(1);
     const errors = this.props.errors.map((error, idx) => {
       return (<li key={idx}>{error}</li>)
     });
@@ -59,8 +62,8 @@ class SessionForm extends React.Component {
           </h1>
 
           <ul>
-            <li><Link to='/login'>Login</Link></li>
-            <li><Link to='/signup'>Sign Up</Link></li>
+            <li><Link to='/login' onClick={this.removeErrors}>Login</Link></li>
+            <li><Link to='/signup' onClick={this.removeErrors}>Sign Up</Link></li>
             <li><a href='#' onClick={this.handleGuest}>Guests</a></li>
           </ul>
         </div>
@@ -70,37 +73,37 @@ class SessionForm extends React.Component {
             <h1>{this.props.formType}</h1>
             <br></br>
             <form onSubmit={this.handleSubmit}>
-              <label> Username:
-                <input onChange={this.update('username')} type='text'></input>
+              <label>
+                <input onChange={this.update('username')} type='text' placeholder='Username'></input>
               </label>
               <br></br>
-              <label> Password:
-                <input onChange={this.update('password')} type='password'></input>
-              </label>
-              <br></br>
-
-              <label> Email:
-                <input onChange={this.update('email')} type='text'></input>
+              <label>
+                <input onChange={this.update('password')} type='password' placeholder='Password'></input>
               </label>
               <br></br>
 
-              <label> Address:
-                <input onChange={this.update('address')} type='text'></input>
+              <label>
+                <input onChange={this.update('email')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Email'></input>
               </label>
               <br></br>
 
-              <label> City:
-                <input onChange={this.update('city')} type='text'></input>
+              <label>
+                <input onChange={this.update('address')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Address'></input>
               </label>
               <br></br>
 
-              <label> State:
-                <input onChange={this.update('state')} type='text'></input>
+              <label>
+                <input onChange={this.update('city')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='City'></input>
               </label>
               <br></br>
 
-              <label> Zip:
-                <input onChange={this.update('zip')} type='text'></input>
+              <label>
+                <input onChange={this.update('state')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='State'></input>
+              </label>
+              <br></br>
+
+              <label>
+                <input onChange={this.update('zip')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Zip'></input>
               </label>
               <br></br>
 
