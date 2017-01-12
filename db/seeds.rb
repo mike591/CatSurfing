@@ -7,8 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: "Guest", password: "password", email: "guest@gmail.com", address: "160 Spear St.", city: "San Francisco", state: "CA", zip: "94105")
-User.create(username: "Forthown1954", password: "Quie5Toox", email: "RaymondEMoore@teleworm.us", address: "482 Ventura Drive", city: "Santa Cruz", state: "CA", zip: "95060")
-User.create(username: "Mencest", password: "Ahr7saoSiif", email: "MauriceLWilson@teleworm.us", address: "4443 Cimmaron Road", city: "San", state: "CA", zip: "94105")
 User.create(username: Faker::Internet.user_name, password: Faker::Internet.password(10, 20), email: Faker::Internet.email, address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
 User.create(username: Faker::Internet.user_name, password: Faker::Internet.password(10, 20), email: Faker::Internet.email, address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
 User.create(username: Faker::Internet.user_name, password: Faker::Internet.password(10, 20), email: Faker::Internet.email, address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
@@ -258,3 +256,8 @@ User.create(username: Faker::Internet.user_name, password: Faker::Internet.passw
 User.create(username: Faker::Internet.user_name, password: Faker::Internet.password(10, 20), email: Faker::Internet.email, address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
 User.create(username: Faker::Internet.user_name, password: Faker::Internet.password(10, 20), email: Faker::Internet.email, address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
 User.create(username: Faker::Internet.user_name, password: Faker::Internet.password(10, 20), email: Faker::Internet.email, address: Faker::Address.street_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip)
+
+Cat.create(user_id: 1, name: Faker::Cat.name, description: Faker::Cat.breed )
+Cat.create(user_id: 1, name: Faker::Cat.name, description: Faker::Cat.breed )
+Cat.create(user_id: 1, name: Faker::Cat.name, description: Faker::Cat.breed )
+Cat.create(user_id: 1, name: Faker::Cat.name, description: Faker::Cat.breed )

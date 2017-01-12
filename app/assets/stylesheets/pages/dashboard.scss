@@ -1,0 +1,60 @@
+.dashboard {
+  height: inherit;
+}
+
+.dashboard-content {
+  height: 90%;
+  background-color: $color3;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard-content-left {
+  width: 35%;
+}
+
+.dashboard-profile {
+  margin: 20px;
+  padding: 20px;
+  height: 20%;
+  background-color: white;
+  border-bottom: 1px solid $color1;
+}
+
+.dashboard-cats {
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  border-bottom: 1px solid $color1;
+}
+
+.dashboard-cats li {
+  transition: background-color .2s;
+  padding: 5px;
+}
+
+.dashboard-cats li:hover {
+  background-color: $color3;
+}
+
+
+
+.dashboard-content-right {
+  width: 70%;
+}
+
+.dashboard-plans {
+  padding: 20px;
+  margin: 20px;
+  height: 40%;
+  background-color: white;
+  border-bottom: 1px solid $color1;
+}
+
+.dashboard-guests {
+  padding: 20px;
+  margin: 20px;
+  height: 40%;
+  background-color: white;
+  border-bottom: 1px solid $color1;
+}
