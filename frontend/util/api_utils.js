@@ -1,8 +1,15 @@
-export const createCat = (cat) => (
+export const getCats = () => (
   $.ajax({
     method: "GET",
+    url: "api/cats"
+  })
+);
+
+export const createCat = (cat) => (
+  $.ajax({
+    method: "POST",
     url: "api/cats",
-    data: cat
+    data: {cat}
   })
 );
 
@@ -10,7 +17,7 @@ export const updateCat = (cat) => (
   $.ajax({
     method: "PATCH",
     url: "api/cats",
-    data: cat
+    data: {cat}
   })
 );
 

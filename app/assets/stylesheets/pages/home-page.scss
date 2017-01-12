@@ -24,7 +24,7 @@
 .home-page-header  ul  li {
   padding: 15px;
   margin: 15px;
-  border-radius: 10px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@
   padding: 10px;
   margin: 10px;
   background-color: $color2;
-  border-radius: 5px;
+  box-shadow: 2px 2px grey;
   display: flex;
   align-items: center;
   justify-content: center;

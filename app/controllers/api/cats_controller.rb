@@ -1,4 +1,9 @@
 class Api::CatsController < ApplicationController
+  def index
+    @cats = Cat.where(user_id: current_user.id)
+    render :index
+  end
+
   def create
     @cat = Cat.new(cat_params)
     @cat.user_id = current_user.id
@@ -19,7 +24,7 @@ class Api::CatsController < ApplicationController
   end
 
   def destroy
-    @cat = Cat.find(params[:id])
+    @cat = Cat.find_by(id: params[:id])
     @cat.destroy
     render :show
   end
