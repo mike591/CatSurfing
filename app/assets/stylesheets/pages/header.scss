@@ -6,21 +6,35 @@
   padding-right: 10px;
   background-color: white;
   border-bottom: 1px solid $color1;
+  min-width: 700px;
 }
 
-.header h1 {
+.header-search-form {
+  width: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: $large-font;
 }
 
 .header-search {
-  width: 30%;
+  width: 70%;
   margin: 20px;
   border-radius: 5px;
 }
 
-.header button {
+.header-search-icon {
   margin: 20px;
+  width: auto;
+  height: auto;
+  background-color: inherit;
+  border-style: none;
+  transition: font-size .2s;
+}
+
+.header-search-icon:hover {
+  font-size: $normal-font;
+}
+
+.header-search-icon:focus {
+  outline:none;
+  border-bottom: 2px solid $color1;
 }

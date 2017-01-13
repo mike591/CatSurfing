@@ -19,6 +19,7 @@ class SessionForm extends React.Component {
     this.update = this.update.bind(this);
     this.handleGuest = this.handleGuest.bind(this);
     this.removeErrors = this.removeErrors.bind(this);
+    this.nav = this.nav.bind(this);
   }
 
   handleSubmit(e) {
@@ -43,6 +44,13 @@ class SessionForm extends React.Component {
       .then((res) => this.props.router.push('/dashboard') )
   }
 
+  nav(link) {
+    return (e) => {
+      e.preventDefault();
+      hashHistory.push(link);
+    }
+  }
+
   removeErrors() {
     this.props.removeErrors();
   }
@@ -55,16 +63,16 @@ class SessionForm extends React.Component {
     return (
       <div className='session-page'>
         <div className="home-page-header">
-          <h1>
+          <h1 className='logo'>
             <Link to='/'>
               CatSurfing
             </Link>
           </h1>
 
-          <ul>
-            <li><Link to='/login' onClick={this.removeErrors}>Login</Link></li>
-            <li><Link to='/signup' onClick={this.removeErrors}>Sign Up</Link></li>
-            <li><a href='#' onClick={this.handleGuest}>Guests</a></li>
+          <ul className='nav-list'>
+            <li className="button" onClick={this.nav('/login')}>Login</li>
+            <li className="button" onClick={this.nav('/signup')}>Sign Up</li>
+            <li className="button" onClick={this.handleGuest}>Guests</li>
           </ul>
         </div>
 
@@ -74,40 +82,40 @@ class SessionForm extends React.Component {
             <br></br>
             <form onSubmit={this.handleSubmit}>
               <label>
-                <input onChange={this.update('username')} type='text' placeholder='Username'></input>
+                <input onChange={this.update('username')} type='text' placeholder='Username' required></input>
               </label>
               <br></br>
               <label>
-                <input onChange={this.update('password')} type='password' placeholder='Password'></input>
+                <input onChange={this.update('password')} type='password' placeholder='Password' required></input>
               </label>
               <br></br>
 
               <label>
-                <input onChange={this.update('email')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Email'></input>
+                <input onChange={this.update('email')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Email' required></input>
               </label>
               <br></br>
 
               <label>
-                <input onChange={this.update('address')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Address'></input>
+                <input onChange={this.update('address')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Address' required></input>
               </label>
               <br></br>
 
               <label>
-                <input onChange={this.update('city')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='City'></input>
+                <input onChange={this.update('city')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='City' required></input>
               </label>
               <br></br>
 
               <label>
-                <input onChange={this.update('state')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='State'></input>
+                <input onChange={this.update('state')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='State' required></input>
               </label>
               <br></br>
 
               <label>
-                <input onChange={this.update('zip')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Zip'></input>
+                <input onChange={this.update('zip')} type={ (this.props.formType === 'signup') ? 'text' : 'hidden'} placeholder='Zip' required></input>
               </label>
               <br></br>
 
-              <input type='submit' value='Submit'/>
+              <input className='form-button' type='submit' value='Submit'/>
             </form>
             <br></br>
             <br></br>

@@ -1,3 +1,9 @@
 $normal-font: 20px;
 $large-font: 30px;
 $extra-large-font: 50px;
+
+$font: Roboto;
+
+* {
+  font-family: $font;
+}

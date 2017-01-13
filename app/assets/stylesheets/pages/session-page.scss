@@ -3,8 +3,6 @@
   height: inherit;
 }
 
-// Header located css located in home-page.scss
-
 .session-page-form-container {
   display: flex;
   justify-content: flex-start;
@@ -17,37 +15,17 @@
 
 .session-page-form {
   border: 1px solid black;
-  border-radius: 5px;
   padding: 25px;
   width: 300px;
   align-self: center;
   background-color: $color1;
   opacity: .9;
-  box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 2px 2px gray;
 }
 
 .session-page-form input {
   font-size: $normal-font;
   margin-bottom: 5px;
-  border-radius: 5px;
-}
-
-.session-page-form input[type=submit] {
-    font-size: $normal-font;
-    background: $color4;
-    border: none;
-    cursor: pointer;
-    margin-top: 5%;
-    border-radius: 0;
-    transition: background-color .2s;
-}
-
-.session-page-form input[type=submit]:hover {
-    background: $color3;
-}
-
-.session-page-form input[type=submit]:active {
-  background: $color2;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

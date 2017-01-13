@@ -10,33 +10,6 @@
   padding-right: 10px;
 }
 
-.home-page-header h1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $large-font;
-}
-
-.home-page-header  ul {
-  display: flex;
-}
-
-.home-page-header  ul  li {
-  padding: 15px;
-  margin: 15px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color .2s;
-  background-color: $color2;
-  color: white;
-}
-
-.home-page-header  ul  li:hover {
-  background-color: $color4;
-  color: black;
-}
 
 .home-page-main {
   height: 55%;
@@ -69,29 +42,7 @@
   justify-content: center;
 }
 
-.home-page-main ul li {
-  padding: 10px;
-  margin: 10px;
-  background-color: $color2;
-  box-shadow: 2px 2px grey;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-	font-weight: bold;
-	text-transform: uppercase;
-	color: $color3;
-  transition: background-color .2s;
-}
 
-.home-page-main  div  ul  li:hover {
-  opacity: 0.7;
-  background-color: $color4;
-  color: black;
-}
-
-.home-page-main  div  ul  li:active {
-  opacity: 0.2;
-}
 
 .home-page-desc {
   height: 30%;
