@@ -1,7 +1,17 @@
 class Api::UsersController < ApplicationController
+  def index
+    @users = User.where(city: params[:city]).where.not(id: current_user.id).where.not(status: 'Not Accepting')
+    render :index
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    render :show
+  end
+
   def create
     @user = User.new(user_params)
-    @user.status = 'Maybe';
+    @user.status = 'Maybe'
     if @user.save
       log_in(@user)
       render :show

@@ -1,3 +1,18 @@
+export const getHosts = (city) => (
+  $.ajax({
+    method: "GET",
+    url: "api/users",
+    data: {city}
+  })
+);
+
+export const getHost = (id) => (
+  $.ajax({
+    method: "GET",
+    url: `api/users/${id}`
+  })
+);
+
 export const getCats = () => (
   $.ajax({
     method: "GET",

@@ -6,7 +6,7 @@ class Header extends React.Component {
     super(props);
 
     this.logout = this.logout.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
   }
 
   logout(e) {
@@ -16,9 +16,21 @@ class Header extends React.Component {
     ))
   }
 
-  handleSearch(e) {
+  handleSearchSubmit(e) {
     e.preventDefault();
-    hashHistory.push('/search');
+    let query = document.getElementById('autocomplete').value
+    hashHistory.push({pathname: '/search', query: query});
+  }
+
+  componentDidMount() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+    let input = document.getElementById('autocomplete');
+    let options = {
+      types: ['(cities)'],
+      componentRestrictions: {country: "us"}
+    };
+    new google.maps.places.Autocomplete(input, options);
   }
 
   render() {
@@ -30,8 +42,8 @@ class Header extends React.Component {
           </Link>
         </h1>
 
-        <form onSubmit={this.handleSearch} className='header-search-form'>
-          <input className='header-search' type='text' placeholder='Where are your cats going?' />
+        <form onSubmit={this.handleSearchSubmit} className='header-search-form'>
+          <input id='autocomplete' className='header-search' type='text' placeholder='Where are your cats going?'/>
           <input className='header-search-icon' type='submit' value='&#x1f50d;' />
         </form>
 
