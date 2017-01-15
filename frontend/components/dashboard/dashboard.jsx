@@ -43,11 +43,10 @@ class Dashboard extends React.Component {
               <h1 className='dashboard-title'>{currentUser.username}</h1>
 
               <h2 className='dashboard-profile-details'>{address}</h2>
-
               <select onChange={this.handleStatus} className='dashboard-status' value={status}>
-                <option  value="Accepting">Accepting</option>
-                <option  value="Maybe">Maybe</option>
-                <option  value="Not Accepting">Not Accepting</option>
+                <option value="Accepting Guests">Accepting Guests</option>
+                <option value="Maybe Accepting Guests">Maybe Accepting Guests</option>
+                <option value="Not Accepting Guests">Not Accepting Guests</option>
               </select>
             </div>
             <div className='dashboard-cats'>

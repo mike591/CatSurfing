@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.where(city: params[:city]).where.not(id: current_user.id).where.not(status: 'Not Accepting')
+    @users = User.where(city: params[:city]).where.not(id: current_user.id).where.not(status: 'Not Accepting Guests')
     render :index
   end
 

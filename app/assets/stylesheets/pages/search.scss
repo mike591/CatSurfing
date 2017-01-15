@@ -22,7 +22,7 @@
   width: 100%;
   height: 80%;
   background-color: white;
-  overflow: auto;
+  overflow: scroll;
   border-bottom: 1px solid $color1;
 }
 
@@ -50,5 +50,5 @@
 
 // RIGHT
 .search-page-right {
-  width: 70%;
+  width: 60%;
 }

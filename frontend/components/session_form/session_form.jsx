@@ -60,6 +60,13 @@ class SessionForm extends React.Component {
       return (<li key={idx}>{error}</li>)
     });
 
+    let credentialChoice;
+    if (this.props.formType === 'signup') {
+      credentialChoice = <h2 className='credential-choice'>Already have an account? <Link className='choice-link' onClick={this.nav('/login')}>login</Link></h2>
+    } else {
+      credentialChoice = <h2 className='credential-choice'>Don't have an account? <Link className='choice-link' onClick={this.nav('/signup')}>signup</Link></h2>
+    }
+
     return (
       <div className='session-page'>
         <div className="home-page-header">
@@ -78,7 +85,7 @@ class SessionForm extends React.Component {
 
         <div className='session-page-form-container'>
           <div className='session-page-form'>
-            <h1>{this.props.formType}</h1>
+            <h1 className='formType'><hr/>{this.props.formType}<hr/></h1>
             <br></br>
             <form onSubmit={this.handleSubmit}>
               <label>
@@ -117,6 +124,7 @@ class SessionForm extends React.Component {
 
               <input className='form-button' type='submit' value='Submit'/>
             </form>
+            {credentialChoice}
             <br></br>
             <br></br>
             <ul>

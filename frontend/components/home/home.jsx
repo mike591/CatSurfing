@@ -54,13 +54,6 @@ class Home extends React.Component {
             </ul>
           </div>
         </div>
-
-        <div className="home-page-desc">
-          <h1>CatSurfing is...</h1>
-          <p>A website dedicated to the happiness of cats. Users can send cats
-            to a friend anywhere across the globe! Users can also offer to host
-            any cats curious enough to visit your part of the world.</p>
-        </div>
       </div>
     )
   }
