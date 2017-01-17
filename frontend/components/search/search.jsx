@@ -16,6 +16,12 @@ class Search extends React.Component {
     this.props.getHosts(this.props.city);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props.city);
+    console.log(nextProps);
+  }
+
+
   center(host) {
     return (e) => {
       e.preventDefault();

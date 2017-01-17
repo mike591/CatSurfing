@@ -8,6 +8,7 @@ class Host extends React.Component {
 
     this.state = {
       cat_id: '',
+      cat_name: '',
       host_id: '',
       host_name: '',
       start: '',
@@ -28,6 +29,7 @@ class Host extends React.Component {
     e.preventDefault();
     let cat = this.state;
     let booking = { cat_id: cat.cat_id, start: cat.start, end: cat.end };
+    booking.cat_name = this.props.cats[cat.cat_id].name;
     booking.host_id = this.props.host_id;
     booking.host_name = this.props.host.username;
     this.props.createBooking(booking).then(() => (
@@ -62,18 +64,16 @@ class Host extends React.Component {
       ))
     }
 
-
-
     return (
       <div className='host-page'>
         <Header />
         <div className='host-page-main'>
           <div className='host-page-left'>
             <div className='host-profile'>
-              <h1 className='host-page-title'>Host {host.username}</h1>
-              <h2>Address: {`${host.city}, ${host.state}, ${host.zip}`}</h2>
-              <h2>Email: {host.email}</h2>
-              <h2>Status: {host.status}</h2>
+              <h1 className='host-page-title'>{host.username}{"'"}s Host Page</h1>
+              <h2>{`${host.city}, ${host.state}, ${host.zip}`}</h2>
+              <h2>{host.email}</h2>
+              <h2>{host.status}</h2>
             </div>
           </div>
 
@@ -81,18 +81,14 @@ class Host extends React.Component {
             <div className='host-schedule'>
               <h1 className='host-page-title'>Create a Booking!</h1>
               <form onSubmit={this.handleCreateBooking}>
-                <select required onChange={this.handleChange("cat_id")}>
-                  <option selected disabled>----- Select a Cat! -----</option>
+                <select className='host-schedule-select' onChange={this.handleChange("cat_id")}>
+                  <option selected disabled>Select a Cat!</option>
                   {catOptions}
                 </select>
                 <br></br>
-                <label>Start Date
-                  <input required onChange={this.handleChange("start")} type='date'/>
-                </label>
+                <span className='schedule-date-span'>Start Date</span><input className='schedule-date' required onChange={this.handleChange("start")} type='date'/>
                 <br></br>
-                <label>End Date
-                  <input required onChange={this.handleChange("end")} type='date'/>
-                </label>
+                <span className='schedule-date-span'>End Date</span><input className='schedule-date' required onChange={this.handleChange("end")} type='date'/>
                 <br></br>
                 <input type='submit' value='Create Booking!'/>
               </form>

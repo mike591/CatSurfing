@@ -17,6 +17,10 @@
   margin-bottom: 10px;
 }
 
+.dashboard-name {
+  font-size: $normal-font;
+}
+
 // LEFT SIDE
 
 .dashboard-content-left {
@@ -60,6 +64,7 @@
 .catlist {
   transition: background-color .2s;
   padding: 10px;
+  color: $color6;
   border-bottom: 2px solid $color1;
 }
 
@@ -95,12 +100,46 @@
   width: 70%;
 }
 
+.dashboard-booking-details {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 .dashboard-plans {
   padding: 20px;
   margin: 20px;
   height: 40%;
   background-color: white;
+  overflow-y: scroll;
   border-bottom: 2px solid $color1;
+}
+
+.dashboard-plans > ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+
+.dashboard-plans > ul > li {
+  padding-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $color2;
+  transition: background-color .2s;
+  color: $color6;
+}
+
+.dashboard-plans > ul > li > h1 {
+  color: $color2;
+}
+
+.dashboard-plans > ul > li:hover {
+  background-color: $color3;
+  cursor: pointer;
 }
 
 .dashboard-guests {
@@ -108,5 +147,23 @@
   margin: 20px;
   height: 40%;
   background-color: white;
+  overflow-y: scroll;
   border-bottom: 2px solid $color1;
+}
+
+.dashboard-guests > ul {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: $color6;
+  padding-top: 20px;
+  padding-right: 200px;
+  padding-bottom: 20px;
+  padding-left: 200px;
+}
+
+.dashboard-guests > ul > li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $color2;
 }

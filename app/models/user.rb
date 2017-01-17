@@ -8,11 +8,13 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :cats
+  has_many :reviews
 
   has_many :bookings,
   primary_key: :id,
   foreign_key: :host_id,
   class_name: "Booking"
+
 
   def self.generate_token
     SecureRandom.urlsafe_base64()

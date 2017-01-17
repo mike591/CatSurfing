@@ -2,6 +2,7 @@ class CreateBookings < ActiveRecord::Migration[5.0]
   def change
     create_table :bookings do |t|
       t.integer :cat_id
+      t.string :cat_name
       t.integer :host_id
       t.string :host_name
       t.date :start

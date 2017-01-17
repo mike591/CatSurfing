@@ -14,6 +14,7 @@ class Dashboard extends React.Component {
 
     this.handleStatus = this.handleStatus.bind(this);
     this.handleDeleteBooking = this.handleDeleteBooking.bind(this);
+    this.handleNavToHost = this.handleNavToHost.bind(this);
   }
 
   handleStatus(e) {
@@ -27,6 +28,13 @@ class Dashboard extends React.Component {
     return (e) => {
       e.preventDefault();
       this.props.deleteBooking(id);
+    }
+  }
+
+  handleNavToHost(id) {
+    return (e) => {
+      e.preventDefault();
+      hashHistory.push(`/host/${id}`)
     }
   }
 
@@ -45,16 +53,33 @@ class Dashboard extends React.Component {
       cats.forEach((cat) => {
         cat.bookings.forEach((booking) => {
           catBookings.push (
-            <li key={booking.id}>
-              <h1>{cat.name}</h1>
-              <h2>{booking.host_name}</h2>
-              <h2>{booking.start}</h2>
-              <h2>{booking.end}</h2>
-              <button onClick={this.handleDeleteBooking(booking.id)}>Delete Booking</button>
+            <li key={booking.id} onClick={this.handleNavToHost(booking.host_id)}>
+              <h1 className='dashboard-name'>{cat.name}</h1>
+              <h2 className='dashboard-booking-details'>Staying with: {booking.host_name}</h2>
+              <h2 className='dashboard-booking-details'>From: {booking.start} --- To: {booking.end}</h2>
+              <button className='form-button-danger' onClick={this.handleDeleteBooking(booking.id)}>Delete Booking</button>
             </li>
           )
         })
       })
+    } else {
+      <li key={-1}>You have no bookings yet :(</li>
+    }
+
+    let guests = []
+    if (currentUser.bookings.length > 0) {
+      currentUser.bookings.reverse().forEach((booking) => {
+        guests.push (
+          <li key={booking.id}>
+            <h1 className='dashboard-name'>{booking.cat_name}</h1>
+            <h2 className='dashboard-booking-details'>From: {booking.start} --- To: {booking.end}</h2>
+          </li>
+        )
+      })
+    } else {
+      guests.push (
+        <li key={-1}>You have no upcoming guests :(</li>
+      )
     }
 
     return(
@@ -92,6 +117,9 @@ class Dashboard extends React.Component {
             </div>
             <div className='dashboard-guests'>
               <h1 className='dashboard-title'>Cats Booked To Me</h1>
+              <ul>
+                {guests}
+              </ul>
             </div>
           </div>
 
