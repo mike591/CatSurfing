@@ -13,6 +13,7 @@ class Dashboard extends React.Component {
     }
 
     this.handleStatus = this.handleStatus.bind(this);
+    this.handleDeleteBooking = this.handleDeleteBooking.bind(this);
   }
 
   handleStatus(e) {
@@ -22,6 +23,13 @@ class Dashboard extends React.Component {
     this.props.edit(updatedUser);
   }
 
+  handleDeleteBooking(id) {
+    return (e) => {
+      e.preventDefault();
+      this.props.deleteBooking(id);
+    }
+  }
+
   render() {
     if (!this.props.currentUser) {
       return (<div></div>);
@@ -29,7 +37,25 @@ class Dashboard extends React.Component {
 
     let currentUser = this.props.currentUser;
     let address = `${currentUser.city}, ${currentUser.state}, ${currentUser.zip}`;
-    let status = currentUser.status
+    let status = currentUser.status;
+    let cats = Object.values(this.props.cats);
+
+    let catBookings = []
+    if (cats.length > 0) {
+      cats.forEach((cat) => {
+        cat.bookings.forEach((booking) => {
+          catBookings.push (
+            <li key={booking.id}>
+              <h1>{cat.name}</h1>
+              <h2>{booking.host_name}</h2>
+              <h2>{booking.start}</h2>
+              <h2>{booking.end}</h2>
+              <button onClick={this.handleDeleteBooking(booking.id)}>Delete Booking</button>
+            </li>
+          )
+        })
+      })
+    }
 
     return(
       <div className='dashboard'>
@@ -60,6 +86,9 @@ class Dashboard extends React.Component {
           <div className='dashboard-content-right'>
             <div className='dashboard-plans'>
               <h1 className='dashboard-title'>My Cat's Bookings</h1>
+              <ul>
+                {catBookings}
+              </ul>
             </div>
             <div className='dashboard-guests'>
               <h1 className='dashboard-title'>Cats Booked To Me</h1>

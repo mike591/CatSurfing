@@ -13,19 +13,18 @@
   width: 50%;
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 
 .header-search {
   width: 70%;
-  margin: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 5px;
   padding-left: 10px;
 }
 
 .header-search-icon {
-  margin: 20px;
-  width: auto;
-  height: auto;
   background-color: inherit;
   border-style: none;
   transition: font-size .2s;

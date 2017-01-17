@@ -9,6 +9,7 @@ class Search extends React.Component {
 
     this.center = this.center.bind(this);
     this.handleHostClick = this.handleHostClick.bind(this);
+    this.refreshMap = this.refreshMap.bind(this);
   }
 
   componentWillMount() {
@@ -58,14 +59,24 @@ class Search extends React.Component {
     }
   }
 
+  refreshMap() {
+    window.location.reload();
+  }
+
   render() {
     let hosts = this.props.hosts
-    let hostsList = Object.keys(this.props.hosts).map((key) => (
-      <li key={key} className='host-index' onMouseEnter={this.center(hosts[key])} onClick={this.handleHostClick(key)} >
-        <h1>Username: {hosts[key].username}</h1>
-        <h1>Status: {hosts[key].status}</h1>
-      </li>
-    ));
+    let hostsList
+    if (Object.keys(hosts).length === 0) {
+      hostsList = <li className='host-index' >No Hosts In That Area :(</li>
+    } else {
+      hostsList = Object.keys(hosts).map((key) => (
+        <li key={key} className='host-index' onMouseEnter={this.center(hosts[key])} onClick={this.handleHostClick(key)} >
+          <h1>Username: {hosts[key].username}</h1>
+          <h1>Status: {hosts[key].status}</h1>
+        </li>
+      ));
+    }
+
 
     return (
       <div className='search-page'>
@@ -77,6 +88,10 @@ class Search extends React.Component {
               <ul>
                 {hostsList}
               </ul>
+            </div>
+
+            <div className='refresh-map-container'>
+              <button className='button' onClick={this.refreshMap}>Refresh Map</button>
             </div>
           </div>
           <div className='search-page-right'>

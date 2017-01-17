@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170110194042) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "cat_id"
     t.integer  "host_id"
+    t.string   "host_name"
     t.date     "start"
     t.date     "end"
     t.datetime "created_at", null: false

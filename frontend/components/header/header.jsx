@@ -7,6 +7,7 @@ class Header extends React.Component {
 
     this.logout = this.logout.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.handleExplore = this.handleExplore.bind(this);
   }
 
   logout(e) {
@@ -19,6 +20,14 @@ class Header extends React.Component {
   handleSearchSubmit(e) {
     e.preventDefault();
     let query = document.getElementById('autocomplete').value
+    window.location.reload();
+    hashHistory.push({pathname: '/search', query: query});
+  }
+
+  handleExplore(e) {
+    e.preventDefault();
+    let query = 'San Francisco, CA, United States'
+    window.location.reload();
     hashHistory.push({pathname: '/search', query: query});
   }
 
@@ -45,7 +54,9 @@ class Header extends React.Component {
         <form onSubmit={this.handleSearchSubmit} className='header-search-form'>
           <input id='autocomplete' className='header-search' type='text' placeholder='Where are your cats going?'/>
           <input className='header-search-icon' type='submit' value='&#x1f50d;' />
+          <button className='button' onClick={this.handleExplore}>Explore</button>
         </form>
+
 
 
         <ul className='nav-list'>

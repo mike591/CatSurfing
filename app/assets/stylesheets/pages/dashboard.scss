@@ -29,7 +29,7 @@
   padding: 20px;
   height: 20%;
   background-color: white;
-  border-bottom: 1px solid $color1;
+  border-bottom: 2px solid $color1;
 }
 
 .dashboard-profile-details {
@@ -51,15 +51,16 @@
   margin: 20px;
   padding: 20px;
   background-color: white;
-  border-bottom: 1px solid $color1;
+  border-bottom: 2px solid $color1;
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 60%;
 }
 
 .catlist {
   transition: background-color .2s;
   padding: 10px;
-  border-bottom: 1px solid $color1;
+  border-bottom: 2px solid $color1;
 }
 
 .catlist:hover {
@@ -99,7 +100,7 @@
   margin: 20px;
   height: 40%;
   background-color: white;
-  border-bottom: 1px solid $color1;
+  border-bottom: 2px solid $color1;
 }
 
 .dashboard-guests {
@@ -107,5 +108,5 @@
   margin: 20px;
   height: 40%;
   background-color: white;
-  border-bottom: 1px solid $color1;
+  border-bottom: 2px solid $color1;
 }

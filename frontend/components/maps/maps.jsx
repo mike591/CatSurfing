@@ -4,9 +4,20 @@ class Maps extends React.Component {
   constructor(props){
     super(props);
 
+    this.reloadMap = this.reloadMap.bind(this)
   }
 
   componentDidUpdate() {
+    this.reloadMap();
+  }
+
+  componentWillReceiveProps() {
+    this.reloadMap();
+  }
+
+
+
+  reloadMap() {
     let map = new google.maps.Map(document.getElementById('map'), {
       zoom: 3,
     });

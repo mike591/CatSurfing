@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 import {logout, edit} from '../../actions/session_actions';
-import {getCats, createCat, updateCat, deleteCat} from '../../actions/cat_actions';
+import {getCats, createCat, updateCat, deleteCat, deleteBooking} from '../../actions/cat_actions';
 
 const mapStateToProps = (state) => ({
  currentUser: state.session.currentUser,
@@ -14,7 +14,8 @@ const mapDispatchToProps = (dispatch) => ({
   getCats: () => dispatch(getCats()),
   createCat: (cat) => dispatch(createCat(cat)),
   updateCat: (cat) => dispatch(update(cat)),
-  deleteCat: (id) => dispatch(deleteCat(id))
+  deleteCat: (id) => dispatch(deleteCat(id)),
+  deleteBooking: (id) => dispatch(deleteBooking(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

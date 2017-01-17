@@ -34,3 +34,15 @@ export const updateCat = (cat) => (dispatch) => (
 export const deleteCat = (id) => (dispatch) => (
   APIUtils.deleteCat(id).then((res) => dispatch(removeCat(res)))
 );
+
+export const createBooking = (booking) => (dispatch) => (
+  APIUtils.createBooking(booking).then((res) => (
+    APIUtils.getCats().then((cats) => (dispatch(receiveAllCats(cats))))
+  ))
+);
+
+export const deleteBooking = (id) => (dispatch) => (
+  APIUtils.deleteBooking(id).then((res) => (
+    APIUtils.getCats().then((cats) => (dispatch(receiveAllCats(cats))))
+  ))
+);

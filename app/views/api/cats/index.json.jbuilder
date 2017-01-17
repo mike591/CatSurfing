@@ -4,5 +4,6 @@
     json.user_id cat.user_id
     json.name cat.name
     json.description cat.description
+    json.bookings cat.bookings
   end
 end

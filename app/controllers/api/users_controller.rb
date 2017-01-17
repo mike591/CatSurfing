@@ -12,6 +12,7 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.status = 'Maybe'
+    @user.profile = 'No Profile Yet' unless @user.profile
     if @user.save
       log_in(@user)
       render :show
