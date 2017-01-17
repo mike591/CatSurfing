@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
         })
       })
     } else {
-      <li key={-1}>You have no bookings yet :(</li>
+      catBookings.push ( <li key={-1}>You have no bookings yet :(</li> );
     }
 
     let guests = []

@@ -33,6 +33,8 @@ User.create(username: Faker::Internet.user_name, password: "password", email: Fa
 
 
 max = User.all.last.id
+Cat.create(user_id: 1, name: Faker::Cat.name, description: Faker::Cat.breed )
+Cat.create(user_id: 1, name: Faker::Cat.name, description: Faker::Cat.breed )
 Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
 Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
 Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
@@ -107,5 +109,14 @@ Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Ca
 Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
 Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
 Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
-Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
-Cat.create(user_id: (rand(max)+1), name: Faker::Cat.name, description: Faker::Cat.breed )
+
+# Guest's Cat Booked To Someone
+Booking.create(cat_id: 1, cat_name: Cat.find_by_id(1).name, host_id: 2, host_name: User.find_by_id(2).username, start: Faker::Date.backward(30) ,end: Faker::Date.forward(30) )
+Booking.create(cat_id: 2, cat_name: Cat.find_by_id(2).name, host_id: 3, host_name: User.find_by_id(3).username, start: Faker::Date.backward(30) ,end: Faker::Date.forward(30) )
+
+
+# Cat's Booked to Guest
+Booking.create(cat_id: 3, cat_name: Cat.find_by_id(3).name, host_id: 1, host_name: User.find_by_id(1).username, start: Faker::Date.backward(30) ,end: Faker::Date.forward(30) )
+Booking.create(cat_id: 4, cat_name: Cat.find_by_id(4).name, host_id: 1, host_name: User.find_by_id(1).username, start: Faker::Date.backward(30) ,end: Faker::Date.forward(30) )
+Booking.create(cat_id: 5, cat_name: Cat.find_by_id(5).name, host_id: 1, host_name: User.find_by_id(1).username, start: Faker::Date.backward(30) ,end: Faker::Date.forward(30) )
+Booking.create(cat_id: 6, cat_name: Cat.find_by_id(6).name, host_id: 1, host_name: User.find_by_id(1).username, start: Faker::Date.backward(30) ,end: Faker::Date.forward(30) )
