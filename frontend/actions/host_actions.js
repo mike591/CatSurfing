@@ -24,3 +24,11 @@ export const getHosts = (city) => (dispatch) => (
 export const getHost = (id) => (dispatch) => (
   APIUtils.getHost(id).then(res => dispatch(receiveHost(res)))
 );
+
+export const createReview = (review) => (dispatch) => (
+  APIUtils.createReview(review).then(res => dispatch(receiveHost(res.host)))
+);
+
+export const updateReview = (review) => (dispatch) => (
+  APIUtils.updateReview(review).then(res => dispatch(receiveHost(res.host)))
+);

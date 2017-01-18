@@ -26,12 +26,14 @@
 .dashboard-content-left {
   width: 30%;
   min-width: 250px;
+  height: 100%;
 }
 
 .dashboard-profile {
   margin: 20px;
   padding: 20px;
   height: 20%;
+  min-height: 150px;
   background-color: white;
   border-bottom: 2px solid $color1;
 }

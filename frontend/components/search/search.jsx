@@ -21,7 +21,6 @@ class Search extends React.Component {
     console.log(nextProps);
   }
 
-
   center(host) {
     return (e) => {
       e.preventDefault();

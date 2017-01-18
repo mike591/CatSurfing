@@ -16,32 +16,33 @@ ActiveRecord::Schema.define(version: 20170110194042) do
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.integer  "cat_id"
-    t.string   "cat_name"
-    t.integer  "host_id"
-    t.string   "host_name"
-    t.date     "start"
+    t.integer  "cat_id",      null: false
+    t.string   "cat_name",    null: false
+    t.integer  "host_id",     null: false
+    t.string   "host_name",   null: false
+    t.string   "owner_email", null: false
+    t.date     "start",       null: false
     t.date     "end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["cat_id"], name: "index_bookings_on_cat_id", using: :btree
     t.index ["host_id"], name: "index_bookings_on_host_id", using: :btree
   end
 
   create_table "cats", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "name"
-    t.text     "description"
+    t.integer  "user_id",     null: false
+    t.string   "name",        null: false
+    t.text     "description", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_cats_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "host_id"
-    t.integer  "rating"
-    t.text     "review"
+    t.integer  "user_id",    null: false
+    t.integer  "host_id",    null: false
+    t.integer  "rating",     null: false
+    t.text     "review",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["host_id"], name: "index_reviews_on_host_id", using: :btree
@@ -49,15 +50,15 @@ ActiveRecord::Schema.define(version: 20170110194042) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.string   "session_token"
-    t.string   "email"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
-    t.string   "status"
+    t.string   "username",        null: false
+    t.string   "password_digest", null: false
+    t.string   "session_token",   null: false
+    t.string   "email",           null: false
+    t.string   "address",         null: false
+    t.string   "city",            null: false
+    t.string   "state",           null: false
+    t.integer  "zip",             null: false
+    t.string   "status",          null: false
     t.integer  "age"
     t.string   "sex"
     t.text     "profile"

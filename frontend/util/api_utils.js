@@ -57,3 +57,19 @@ export const deleteBooking = (id) => (
     url: `/api/bookings/${id}`,
   })
 );
+
+export const createReview = (review) => (
+  $.ajax({
+    method: "POST",
+    url: "/api/reviews",
+    data: { review }
+  })
+);
+
+export const updateReview = (review) => (
+  $.ajax({
+    method: "PATCH",
+    url: `/api/reviews/${review.id}`,
+    data: { review }
+  })
+);

@@ -73,6 +73,7 @@ class Dashboard extends React.Component {
           <li key={booking.id}>
             <h1 className='dashboard-name'>{booking.cat_name}</h1>
             <h2 className='dashboard-booking-details'>From: {booking.start} --- To: {booking.end}</h2>
+            <h2 className='dashboard-booking-details'>{booking.owner_email}</h2>
           </li>
         )
       })

@@ -3,6 +3,7 @@ import Search from './search';
 import {clearHost, getHosts, getHost} from '../../actions/host_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  
   let query = Object.values(ownProps.location.query).join('').split(',');
   return ({
     hosts: state.hosts,

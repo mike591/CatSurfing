@@ -11,6 +11,7 @@ class Host extends React.Component {
       cat_name: '',
       host_id: '',
       host_name: '',
+      owner_email: '',
       start: '',
       end: '',
       errors: ''
@@ -18,6 +19,7 @@ class Host extends React.Component {
 
     this.handleCreateBooking = this.handleCreateBooking.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleCreateReview = this.handleCreateReview.bind(this);
   }
 
   componentWillMount(){
@@ -32,11 +34,16 @@ class Host extends React.Component {
     booking.cat_name = this.props.cats[cat.cat_id].name;
     booking.host_id = this.props.host_id;
     booking.host_name = this.props.host.username;
+    booking.owner_email = this.props.currentUser.email;
     this.props.createBooking(booking).then(() => (
       hashHistory.push('/dashboard')
     ), (err) => (
       this.setState({errors: err.responseJSON})
     ))
+  }
+
+  handleCreateReview(e) {
+    e.preventDefault();
   }
 
   handleChange(field) {
@@ -99,6 +106,19 @@ class Host extends React.Component {
 
             <div className='host-overview'>
               <h1 className='host-page-title'>Host Reviews</h1>
+              <form className='host-review-form' onSubmit={this.handleCreateReview}>
+                <div className='star-radio'>
+                  <input type="radio" name="rating" value="1" />
+                  <input type="radio" name="rating" value="2" />
+                  <input type="radio" name="rating" value="3" />
+                  <input type="radio" name="rating" value="4" />
+                  <input type="radio" name="rating" value="5" />
+                </div>
+
+                <br></br>
+                <textarea placeholder='Type review here'/>
+                <input type='submit' value='Create Review!' />
+              </form>
             </div>
 
             <div className='host-about'>

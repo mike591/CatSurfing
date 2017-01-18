@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  validates :cat_id, :start, :host_id, :host_name, :end, presence: true
+  validates :cat_id, :start, :host_id, :host_name, :owner_email, :end, presence: true
   validate :no_overlapping_bookings, :no_self_booking, :start_before_end
 
   belongs_to :cat
