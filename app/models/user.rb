@@ -8,13 +8,23 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :cats
-  has_many :reviews
+
+  has_many :reviews,
+  primary_key: :id,
+  foreign_key: :host_id,
+  class_name: "Review"
 
   has_many :bookings,
   primary_key: :id,
   foreign_key: :host_id,
   class_name: "Booking"
 
+  geocoded_by :full_address
+  after_validation :geocode
+
+  def full_address
+    "#{self.address}, #{self.city}, #{self.state}"
+  end
 
   def self.generate_token
     SecureRandom.urlsafe_base64()

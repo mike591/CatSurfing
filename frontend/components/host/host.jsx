@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../header/header_container';
 import {hashHistory} from 'react-router'
+import HostProfile from './host_profile'
+
 
 class Host extends React.Component {
   constructor(props) {
@@ -8,23 +10,26 @@ class Host extends React.Component {
 
     this.state = {
       cat_id: '',
-      cat_name: '',
-      host_id: '',
-      host_name: '',
-      owner_email: '',
       start: '',
       end: '',
-      errors: ''
+      errors: '',
+      rating: 1,
+      review: ''
     }
 
     this.handleCreateBooking = this.handleCreateBooking.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleCreateReview = this.handleCreateReview.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentWillMount(){
     this.props.getHost(this.props.host_id)
     this.props.getCats()
+  }
+
+  componentWillUpdate(nextProps){
+
   }
 
   handleCreateBooking(e) {
@@ -44,17 +49,38 @@ class Host extends React.Component {
 
   handleCreateReview(e) {
     e.preventDefault();
+    let review = {
+      user_id: this.props.currentUser.id,
+      host_id: this.props.host_id,
+      rating: parseInt(document.querySelector('input[name="rating"]:checked').value),
+      review: this.state.review
+    }
+    this.props.createReview(review).then(() => (
+      this.setState ({
+        rating: 1,
+        review: ''
+      })
+    ));
   }
 
   handleChange(field) {
     return (e) => {
       e.preventDefault();
-      this.setState({[field]: e.target.value})
+      let val = e.target.value
+      this.setState({[field]: val});
+    }
+  }
+
+  handleDelete(id) {
+    return (e) => {
+      e.preventDefault();
+      this.props.deleteReview(id);
     }
   }
 
   render() {
     let host = this.props.host;
+
     let catOptions;
     if (Object.values(this.props.cats).length === 0) {
       catOptions = null
@@ -71,20 +97,68 @@ class Host extends React.Component {
       ))
     }
 
+    let reviewList = [];
+    let reviewed = false;
+    if (Object.values(host).length > 0  && typeof host.reviews !== 'undefined') {
+      host.reviews.forEach((review) => {
+        let stars = []
+        for (var i = 0; i < review.rating; i++) {
+          stars.push(<span key={i}>&#9734;</span>)
+        }
+
+        let del;
+        if (review.user_id === currentUser.id) {
+          reviewed = true;
+          del = <button className='delete-review-button' onClick={this.handleDelete(review.id)}>Delete</button>
+        }
+
+        reviewList.push (
+          <li className='review-list' key={review.id}>
+            <h1>{stars}</h1>
+            <p>{review.review}</p>
+            {del}
+          </li>
+        )
+      })
+    }
+
+    let starContainer = [];
+    for (let i = 1; i <= 5; i++) {
+      if (this.state.rating === i) {
+        starContainer.push(
+          <input key={i} className='star-radio' type="radio" name="rating" value={i} defaultChecked={true}/>
+        )
+      } else {
+        starContainer.push(
+          <input key={i} className='star-radio' type="radio" name="rating" value={i} defaultChecked={false}/>
+        )
+      }
+    }
+
+    let reviewForm = <div></div>
+    if (!reviewed) {
+      reviewForm = (
+        <form className='host-review-form' onSubmit={this.handleCreateReview}>
+          <div className='star-container'>
+            {starContainer}
+          </div>
+          <br></br>
+          <textarea onChange={this.handleChange('review')} placeholder='Type review here' value={this.state.review}/>
+          <input className='active-form-submit' type='submit' value='Create Review!' />
+        </form>
+      )
+    }
+
     return (
       <div className='host-page'>
         <Header />
         <div className='host-page-main'>
           <div className='host-page-left'>
-            <div className='host-profile'>
-              <h1 className='host-page-title'>{host.username}{"'"}s Host Page</h1>
-              <h2>{`${host.city}, ${host.state}, ${host.zip}`}</h2>
-              <h2>{host.email}</h2>
-              <h2>{host.status}</h2>
-            </div>
+            <HostProfile host={host}/>
           </div>
 
           <div className='host-page-right'>
+
             <div className='host-schedule'>
               <h1 className='host-page-title'>Create a Booking!</h1>
               <form onSubmit={this.handleCreateBooking}>
@@ -106,19 +180,11 @@ class Host extends React.Component {
 
             <div className='host-overview'>
               <h1 className='host-page-title'>Host Reviews</h1>
-              <form className='host-review-form' onSubmit={this.handleCreateReview}>
-                <div className='star-radio'>
-                  <input type="radio" name="rating" value="1" />
-                  <input type="radio" name="rating" value="2" />
-                  <input type="radio" name="rating" value="3" />
-                  <input type="radio" name="rating" value="4" />
-                  <input type="radio" name="rating" value="5" />
-                </div>
+              <ul className='review-list-container'>
+                {reviewList}
+              </ul>
 
-                <br></br>
-                <textarea placeholder='Type review here'/>
-                <input type='submit' value='Create Review!' />
-              </form>
+              {reviewForm}
             </div>
 
             <div className='host-about'>

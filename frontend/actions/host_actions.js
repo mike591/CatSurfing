@@ -8,10 +8,12 @@ export const receiveHosts = (hosts) => ({
   hosts
 });
 
-export const receiveHost = (host) => ({
-  type: RECEIVE_HOST,
-  host
-});
+export const receiveHost = (host) => {
+  return ({
+    type: RECEIVE_HOST,
+    host
+  });
+};
 
 export const clearHost = () => ({
   type: CLEAR_HOST
@@ -25,10 +27,16 @@ export const getHost = (id) => (dispatch) => (
   APIUtils.getHost(id).then(res => dispatch(receiveHost(res)))
 );
 
-export const createReview = (review) => (dispatch) => (
-  APIUtils.createReview(review).then(res => dispatch(receiveHost(res.host)))
-);
+export const createReview = (review) => (dispatch) => {
+  return (
+    APIUtils.createReview(review).then(res => dispatch(receiveHost(res)))
+  );
+};
 
 export const updateReview = (review) => (dispatch) => (
-  APIUtils.updateReview(review).then(res => dispatch(receiveHost(res.host)))
+  APIUtils.updateReview(review).then(res => dispatch(receiveHost(res)))
+);
+
+export const deleteReview = (review) => (dispatch) => (
+  APIUtils.deleteReview(review).then(res => dispatch(receiveHost(res)))
 );

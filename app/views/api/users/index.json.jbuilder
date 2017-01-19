@@ -6,5 +6,7 @@
     json.address user.address
     json.city user.city
     json.state user.state
+    json.latitude user.latitude
+    json.longitude user.longitude
   end
 end

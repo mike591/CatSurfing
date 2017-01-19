@@ -148,7 +148,39 @@
   margin: 10px;
 }
 
-.host-review-form > input[type='submit'] {
+.review-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.review-list {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $color1;
+}
+
+.review-list > p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: $color6;
+}
+
+.delete-review-button {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: $small-font;
+  text-align: center;
+  border-style: none;
+}
+
+.delete-review-button:hover {
+  background-color: crimson;
+  color: white;
+}
+
+.active-form-submit {
   border-style: none;
   background-color: $color3;
   transition: background-color .2s;
@@ -157,30 +189,33 @@
   margin-right: 40%;
 }
 
-.host-review-form > input[type='submit']:hover {
+.active-form-submit:hover {
   border-style: none;
   background-color: $color2;
   color: white;
   cursor: pointer;
 }
 
-.star-radio > input[type="radio"] {
-  -webkit-appearance: none;
+.star-radio {
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
   width: 27px;
   height: 27px;
   background-image: url(../assets/stars.png);
   vertical-align: bottom;
 }
 
-.star-radio > input[type="radio"]:checked {
+.star-radio:checked {
   background-position: 30px 30px;
 }
 
 
-.star-radio > input[type="radio"]:hover {
-  border-bottom: 1px solid $color2;
+.star-radio:hover {
+  border-bottom: 2px solid $color2;
   cursor: pointer;
 }
+
 
 .host-about {
   overflow-y: scroll;

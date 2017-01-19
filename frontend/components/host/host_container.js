@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Host from './host';
-import { clearHost, getHosts, getHost, createReview, updateReview } from '../../actions/host_actions';
+import { clearHost, getHosts, getHost, createReview, updateReview, deleteReview } from '../../actions/host_actions';
 import { getCats, createBooking } from '../../actions/cat_actions';
 
 const mapStateToProps = (state, ownProps) => {
@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   getCats: () => dispatch(getCats()),
   createBooking: (booking) => dispatch(createBooking(booking)),
   createReview: (review) => dispatch(createReview(review)),
-  updateReview: (review) => dispatch(updateReview(review))
+  updateReview: (review) => dispatch(updateReview(review)),
+  deleteReview: (review) => dispatch(deleteReview(review))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Host);

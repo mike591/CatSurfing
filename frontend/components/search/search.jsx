@@ -7,55 +7,63 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
 
-    this.center = this.center.bind(this);
+    this.state = {
+      map: ''
+    }
+
+    this.addMarker = this.addMarker.bind(this);
     this.handleHostClick = this.handleHostClick.bind(this);
-    this.refreshMap = this.refreshMap.bind(this);
+    this.initMap = this.initMap.bind(this);
   }
 
   componentWillMount() {
     this.props.getHosts(this.props.city);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(this.props.city);
-    console.log(nextProps);
+  componentDidMount() {
+
   }
 
-  center(host) {
+  componentWillReceiveProps(nextProps) {
+    let query = Object.values(nextProps.location.query).join('').split(',');
+    this.initMap(query[0]);
+  }
+
+  componentWillUpdate(nextProps) {
+
+  }
+
+  addMarker(host) {
     return (e) => {
       e.preventDefault();
-      let map = new google.maps.Map(document.getElementById('map'));
-      let geocoder = new google.maps.Geocoder();
-      let bounds = new google.maps.LatLngBounds();
+      let map = this.state.map;
 
-      let address = host.address;
-      address += `, ${host.city}`
-      address += `, ${host.state}`
+      let latlng = {lat: host.latitude, lng: host.longitude}
+      let marker = new google.maps.Marker({
+        position: latlng,
+        map: map
+      })
 
-      geocoder.geocode( { 'address': address}, (results, status) => {
-        if (status == google.maps.GeocoderStatus.OK) {
-          let latitude = results[0].geometry.location.lat();
-          let longitude = results[0].geometry.location.lng();
-          let latlong = {lat: latitude, lng: longitude};
-
-          let marker = new google.maps.Marker({
-            position: latlong,
-            map: map
-          })
-
-          let infowindow = new google.maps.InfoWindow({
-            content: address
-          });
-          marker.addListener('click', function() {
-            infowindow.open(marker.get('map'), marker);
-          });
-
-          bounds.extend(marker.position);
-        }
-        map.fitBounds(bounds);
-        map.setZoom(12);
-      });
+      map.setCenter(latlng);
+      map.setZoom(13);
+      this.setState({map: map});
     }
+  }
+
+  initMap(city) {
+    let geocoder = new google.maps.Geocoder();
+    let map = new google.maps.Map(document.getElementById('map'))
+
+    geocoder.geocode( { 'address': city }, (results, status) => {
+      if (status == google.maps.GeocoderStatus.OK) {
+        let latitude = results[0].geometry.location.lat();
+        let longitude = results[0].geometry.location.lng();
+
+        map.setCenter({lat: latitude, lng: longitude});
+        map.setZoom(13);
+        this.setState({map: map});
+      }
+    });
   }
 
   handleHostClick(key) {
@@ -74,14 +82,17 @@ class Search extends React.Component {
     if (Object.keys(hosts).length === 0) {
       hostsList = <li className='host-index' >No Hosts In That Area :(</li>
     } else {
-      hostsList = Object.keys(hosts).map((key) => (
-        <li key={key} className='host-index' onMouseEnter={this.center(hosts[key])} onClick={this.handleHostClick(key)} >
-          <h1>Username: {hosts[key].username}</h1>
-          <h1>Status: {hosts[key].status}</h1>
-        </li>
-      ));
-    }
+      hostsList = Object.keys(hosts).map((key) => {
+        let host = hosts[key]
 
+        return (
+          <li key={key} className='host-index' onClick={this.handleHostClick(key)} >
+            <h1>Username: {host.username}</h1>
+            <h1>Status: {host.status}</h1>
+          </li>
+        )
+      });
+    }
 
     return (
       <div className='search-page'>
@@ -94,13 +105,11 @@ class Search extends React.Component {
                 {hostsList}
               </ul>
             </div>
-
-            <div className='refresh-map-container'>
-              <button className='button' onClick={this.refreshMap}>Refresh Map</button>
-            </div>
           </div>
           <div className='search-page-right'>
-            <MapsContainer />
+            <div id='map'>
+
+            </div>
           </div>
         </div>
       </div>

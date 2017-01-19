@@ -26,13 +26,17 @@
 }
 
 .header-search-icon {
+  font-size: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 20px;
   background-color: inherit;
   border-style: none;
   transition: font-size .2s;
 }
 
 .header-search-icon:hover {
-  font-size: $normal-font;
+  font-size: $large-font;
 }
 
 .header-search-icon:focus {
