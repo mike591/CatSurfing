@@ -88,10 +88,8 @@ class Host extends React.Component {
   render() {
     let host = this.props.host;
 
-    let catOptions;
-    if (Object.values(this.props.cats).length === 0) {
-      catOptions = null
-    } else {
+    let catOptions = null
+    if (Object.values(this.props.cats).length > 0) {
       catOptions = Object.values(this.props.cats).map((cat) => (
         <option key={cat.id} value={cat.id}>{cat.name}</option>
       ))
@@ -114,10 +112,13 @@ class Host extends React.Component {
         }
 
         let del;
-        if (review.user_id === currentUser.id) {
-          reviewed = true;
-          del = <button className='delete-review-button' onClick={this.handleDelete(review.id)}>Delete</button>
+        if (this.props.currentUser !== null) {
+          if (review.user_id === this.props.currentUser.id) {
+            reviewed = true;
+            del = <button className='delete-review-button' onClick={this.handleDelete(review.id)}>Delete</button>
+          }
         }
+
 
         reviewList.push (
           <li className='review-list' key={review.id}>
