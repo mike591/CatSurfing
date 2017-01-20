@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @user = User.find_by_id(@review.host_id)
+    @user = User.find(@review.host_id)
     if @review.save
       render :show
     else
@@ -11,7 +11,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find_by_id(params[:id])
+    @review = Review.find(params[:id])
     @user = User.find_by_id(@review.host_id)
     if @review.update(review_params)
       render :show
@@ -21,8 +21,8 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find_by_id(params[:id])
-    @user = User.find_by_id(@review.host_id)
+    @review = Review.find(params[:id])
+    @user = User.find(@review.host_id)
     @review.delete
     render:show
   end

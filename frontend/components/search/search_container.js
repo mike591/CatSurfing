@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
 
   let query = Object.values(ownProps.location.query).join('').split(',');
   return ({
-    hosts: state.hosts,
+    hosts: state.hosts.hosts,
     city: query[0],
     state: query[1],
     country: query[2]

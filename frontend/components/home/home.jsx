@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import SessionFormContainer from '../session_form/session_form_container';
-import Maps from '../maps/maps_container';
 
 class Home extends React.Component {
   constructor(props) {

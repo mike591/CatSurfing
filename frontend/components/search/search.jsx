@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../header/header_container'
-import MapsContainer from '../maps/maps_container';
 import { hashHistory } from 'react-router';
 
 class Search extends React.Component {
@@ -8,46 +7,49 @@ class Search extends React.Component {
     super(props);
 
     this.state = {
-      map: ''
+      map: null,
+      markers: [],
+      openedWindow: null
     }
 
-    this.addMarker = this.addMarker.bind(this);
+    this.openInfoWindow = this.openInfoWindow.bind(this);
     this.handleHostClick = this.handleHostClick.bind(this);
     this.initMap = this.initMap.bind(this);
+    this.resetMap = this.resetMap.bind(this);
   }
 
   componentWillMount() {
-    this.props.getHosts(this.props.city);
+    this.getHostsAndMarkers(this.props.city);
+  }
+
+  getHostsAndMarkers(city) {
+    this.props.getHosts(city).then((res) => {
+      let markers = [];
+      Object.values(res.hosts).forEach((host) => {
+        let latlng = {lat: host.latitude, lng: host.longitude};
+
+        let marker = new google.maps.Marker({
+          position: latlng,
+          clickable: false
+        });
+
+        markers.push(marker);
+      })
+      this.setState({markers: markers});
+    });
   }
 
   componentDidMount() {
-
+    this.initMap(this.props.city);
   }
 
   componentWillReceiveProps(nextProps) {
     let query = Object.values(nextProps.location.query).join('').split(',');
-    this.initMap(query[0]);
-  }
-
-  componentWillUpdate(nextProps) {
-
-  }
-
-  addMarker(host) {
-    return (e) => {
-      e.preventDefault();
-      let map = this.state.map;
-
-      let latlng = {lat: host.latitude, lng: host.longitude}
-      let marker = new google.maps.Marker({
-        position: latlng,
-        map: map
-      })
-
-      map.setCenter(latlng);
-      map.setZoom(13);
-      this.setState({map: map});
+    if (this.props.city !== query[0]) {
+      this.getHostsAndMarkers(query[0]);
     }
+
+    this.initMap(query[0]);
   }
 
   initMap(city) {
@@ -58,22 +60,70 @@ class Search extends React.Component {
       if (status == google.maps.GeocoderStatus.OK) {
         let latitude = results[0].geometry.location.lat();
         let longitude = results[0].geometry.location.lng();
+        let location = {lat: latitude, lng: longitude}
 
-        map.setCenter({lat: latitude, lng: longitude});
+        map.setCenter(location);
         map.setZoom(13);
-        this.setState({map: map});
+        this.setState({map: map, location: location});
       }
     });
   }
+
+  openInfoWindow(host) {
+    return (e) => {
+      e.preventDefault();
+      let map = this.state.map;
+      let openedWindow = this.state.openedWindow;
+
+      if (openedWindow !== null) {
+        openedWindow.close();
+      }
+
+      let marker
+      this.state.markers.forEach((mark) => {
+        if (typeof mark.position === 'undefined') {
+          // Lat Lng doesnt exists - skip
+        } else {
+          if (+(mark.getPosition().lat().toFixed(7)) === host.latitude && +(mark.getPosition().lng().toFixed(7)) == host.longitude) {
+            marker = mark
+          }
+        }
+      })
+
+      let latlng = {lat: marker.position.lat(), lng: marker.position.lng()}
+      let contentString = `<div className="marker-info" style="width: auto;
+      height: 50px;"><h1 style="font-size: 20px;">${host.username}</h1><br/><h2
+      style="text-align: center;">${host.address}</h2></div>`;
+
+
+      let infowindow = new google.maps.InfoWindow({
+         content: contentString
+       });
+
+      infowindow.open(map, marker);
+
+      map.setCenter(latlng);
+      map.setZoom(13);
+      this.setState({map: map, openedWindow: infowindow});
+    }
+  }
+
+  resetMap() {
+    let map = this.state.map;
+    let markers = this.state.markers
+
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+
+    this.setState({map: map, markers: []})
+  }
+
 
   handleHostClick(key) {
     return (e) => {
       hashHistory.push(`/host/${key}`)
     }
-  }
-
-  refreshMap() {
-    window.location.reload();
   }
 
   render() {
@@ -83,14 +133,26 @@ class Search extends React.Component {
       hostsList = <li className='host-index' >No Hosts In That Area :(</li>
     } else {
       hostsList = Object.keys(hosts).map((key) => {
-        let host = hosts[key]
+        let host = hosts[key];
 
         return (
-          <li key={key} className='host-index' onClick={this.handleHostClick(key)} >
-            <h1>Username: {host.username}</h1>
-            <h1>Status: {host.status}</h1>
+          <li key={key} className='host-index' onMouseEnter={this.openInfoWindow(host)} onClick={this.openInfoWindow(host)} >
+            <div className='host-profile-container'>
+              <span className='host-icon' onClick={this.handleHostClick(host.id)}>{host.username[0]}</span>
+              <h1 className='host-username' onClick={this.handleHostClick(host.id)}>{host.username}</h1>
+            </div>
+            <h1 className='host-detail'>{host.status}</h1>
+            <h1 className='host-detail'>{host.address}</h1>
           </li>
         )
+      });
+    }
+
+    if (this.state.map != null) {
+      this.state.markers.forEach((marker) => {
+        if (marker.getMap() !== this.state.map) {
+          marker.setMap(this.state.map);
+        }
       });
     }
 

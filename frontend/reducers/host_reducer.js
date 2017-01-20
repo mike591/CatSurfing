@@ -1,13 +1,24 @@
 import { RECEIVE_HOST, RECEIVE_HOSTS, CLEAR_HOST } from '../actions/host_actions';
+import { merge } from 'lodash'
 
-const HostReducer = (state = {}, action) => {
+const _defaultState = {
+  hosts: {},
+  host: {}
+};
+
+const HostReducer = (state = _defaultState, action) => {
+  let newState;
   switch (action.type) {
     case RECEIVE_HOSTS:
-      return action.hosts;
+      newState = merge({}, state)
+      newState.hosts = action.hosts
+      return newState;
     case RECEIVE_HOST:
-      return action.host;
+      newState = merge({}, state)
+      newState.host = action.host
+      return newState;
     case CLEAR_HOST:
-      return {};
+      return _defaultState;
     default:
       return state;
   }

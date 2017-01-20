@@ -12,9 +12,10 @@ class Host extends React.Component {
       cat_id: '',
       start: '',
       end: '',
-      errors: '',
+      bookingErrors: '',
       rating: 1,
-      review: ''
+      review: '',
+      reviewErrors: ''
     }
 
     this.handleCreateBooking = this.handleCreateBooking.bind(this);
@@ -43,7 +44,7 @@ class Host extends React.Component {
     this.props.createBooking(booking).then(() => (
       hashHistory.push('/dashboard')
     ), (err) => (
-      this.setState({errors: err.responseJSON})
+      this.setState({bookingErrors: err.responseJSON})
     ))
   }
 
@@ -60,6 +61,8 @@ class Host extends React.Component {
         rating: 1,
         review: ''
       })
+    ), (err) => (
+      this.setState({reviewErrors: err.responseJSON})
     ));
   }
 
@@ -90,9 +93,9 @@ class Host extends React.Component {
       ))
     }
 
-    let errorList = [];
-    if (this.state.errors) {
-      errorList = this.state.errors.map((error) => (
+    let bookingErrorList = [];
+    if (this.state.bookingErrors) {
+      bookingErrorList = this.state.bookingErrors.map((error) => (
         <li key={error}>{error}</li>
       ))
     }
@@ -149,6 +152,13 @@ class Host extends React.Component {
       )
     }
 
+    let reviewErrorList = [];
+    if (this.state.reviewErrors) {
+      reviewErrorList = this.state.reviewErrors.map((error) => (
+        <li key={error}>{error}</li>
+      ))
+    }
+
     return (
       <div className='host-page'>
         <Header />
@@ -174,7 +184,7 @@ class Host extends React.Component {
                 <input type='submit' value='Create Booking!'/>
               </form>
               <ul>
-                {errorList}
+                {bookingErrorList}
               </ul>
             </div>
 
@@ -183,7 +193,9 @@ class Host extends React.Component {
               <ul className='review-list-container'>
                 {reviewList}
               </ul>
-
+              <ul>
+                {reviewErrorList}
+              </ul>
               {reviewForm}
             </div>
 

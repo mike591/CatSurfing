@@ -5,6 +5,19 @@ class Header extends React.Component {
   constructor(props){
     super(props);
 
+    this.state = {
+      query: [
+          'San Francisco, CA, United States',
+          'Berkeley, CA, United States',
+          'San Jose, CA, United States',
+          'Sacramento, CA, United States',
+          'San Diego, CA, United States',
+          'Alameda, CA, United States',
+          'Oakland, CA, United States',
+          'Fremont, CA, United States'
+        ]
+    }
+
     this.logout = this.logout.bind(this);
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
     this.handleExplore = this.handleExplore.bind(this);
@@ -20,13 +33,12 @@ class Header extends React.Component {
   handleSearchSubmit(e) {
     e.preventDefault();
     let query = document.getElementById('autocomplete').value
-    window.location.reload();
     hashHistory.push({pathname: '/search', query: query});
   }
 
   handleExplore(e) {
     e.preventDefault();
-    let query = 'San Francisco, CA, United States'
+    let query = this.state.query[Math.floor(Math.random() * this.state.query.length)]
     window.location.reload();
     hashHistory.push({pathname: '/search', query: query});
   }

@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     currentUser: state.session.currentUser,
     host_id: ownProps.params.id,
-    host: state.hosts,
+    host: state.hosts.host,
     cats: state.cats
   });
 };
