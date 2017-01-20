@@ -1,63 +1,45 @@
 # CatSurfing
 
-[Heroku link][heroku]
+[CatSurfing](catsurfing.club) is a website that allows users to let their cats go on vacation.
 
-[Trello link][trello]
+## Features & Implementation
 
-[heroku]: #
-[trello]: https://trello.com/b/RUhWmX0p/catsurfing
+### Guest Sign In
 
-## Minimum Viable Product
+![Guest signin example](docs/gifs/guest_login.gif)
 
-CatSurfing is a web application inspired by CouchSurfing built using Ruby on Rails
-and React/Redux.
+Visitors can easily demo the site through a guest account button. This button sets the form state to the credentials of a demo account and logs the guest in.
 
-- [ ] New account creation, login, and guest/demo login
-- [ ] Cats and their association to users
-- [ ] Host search + Google maps
-- [ ] Bookings
-- [ ] Reviews
-- [ ] Production README [sample](docs/production_readme.md)
+### Search and Google Maps
 
-## Design Docs
-* [View Wireframes][wireframes]
-* [React Components][components]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][sample-state]
+![Search and Google Maps example](docs/gifs/search_and_maps.gif)
 
-[wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+Visitors can use the search bar to search for hosts in a specific location. Search bar will auto complete to valid addresses.
 
-## Implementation Timeline
+### Bookings
 
-### Phase 1: Backend setup and Front End User Authentication (2 days - W1D2)
-**Objective:** Functioning rails project with front-end Authentication
+![Bookings example](docs/gifs/booking.gif)
 
-### Phase 2: Cats (2 days - W1D4)
-**Objective:** All Users should have cats assigned to them if they have any.
+Visitors can book their cats to a host. Validations are in place to ensure a cat is selected and the dates are not conflicting.
 
-### Phase 3: Searching (3 days - W2D2)
-**Objective:** Can search for users around a specific location. Show locations on Google maps
+### Reviews
 
-### Phase 4: Bookings (2 days - W2D4)
-**Objective:** Can view a host and can book an owned cat to the host.
+![Reviews example](docs/gifs/reviews.gif)
 
-### Phase 5: Reviews (1 days - W2D5)
-**Objective:** Allows current user to write reviews to hosts and to see own reviews.
+Visitors can write reviews to a host. The current user can only write one review to the host.
 
+### Single page
 
-### Bonus Features (TBD)
-- [ ] Messaging
-- [ ] User/host profiles
+CatSurfing is a single page app that allows for quick navigation between its various components. As data is fetched from Rails, components are only updated when necessary.
 
-<!-- TODO
-  credit:
-  https://www.pexels.com/photo/tabby-cat-side-view-26511/
+## Future Directions for the Project
 
-  https://color.adobe.com/create/color-wheel/?base=2&rule=Compound&selected=4&name=My%20Color%20Theme&mode=rgb&rgbvalues=0.7113368983957149,0.6454411764705883,0.7411764705882353,0.46878533231472685,0.30892156862745096,0.5411764705882353,0.9176470588235294,0.9137254901960784,0.9411764705882353,0.9485294117647058,0.887770317300298,0.6837316176470588,0.7411764705882353,0.7095588235293846,0.6454411764705883&swatchOrder=0,1,2,3,4
+Given more time, I would like to implement the following:
 
- -->
+### User Profiles
+
+Users can write and edit their own profiles.
+
+### Messaging
+
+Users can communicate with other users within the app.
