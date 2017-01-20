@@ -110,7 +110,7 @@ class Host extends React.Component {
       host.reviews.forEach((review) => {
         let stars = []
         for (var i = 0; i < review.rating; i++) {
-          stars.push(<span key={i}>&#9734;</span>)
+          stars.push(<span className='stars' key={i}>&#9734;</span>)
         }
 
         let del;
