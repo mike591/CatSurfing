@@ -37,6 +37,10 @@ class Host extends React.Component {
     e.preventDefault();
     let cat = this.state;
     let booking = { cat_id: cat.cat_id, start: cat.start, end: cat.end };
+    if (typeof this.props.cats[cat.cat_id] === 'undefined') {
+      this.setState({bookingErrors: ["Please Select a Cat to Book!"]})
+      return
+    }
     booking.cat_name = this.props.cats[cat.cat_id].name;
     booking.host_id = this.props.host_id;
     booking.host_name = this.props.host.username;
@@ -96,7 +100,7 @@ class Host extends React.Component {
     let bookingErrorList = [];
     if (this.state.bookingErrors) {
       bookingErrorList = this.state.bookingErrors.map((error) => (
-        <li key={error}>{error}</li>
+        <li className='booking-error-list' key={error}>{error}</li>
       ))
     }
 

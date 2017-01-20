@@ -162,7 +162,7 @@ class Search extends React.Component {
         <div className='search-page-content'>
           <div className='search-page-left'>
             <div className='search-page-list'>
-              <h1 className='search-page-list-title'>Hosts</h1>
+              <h1 className='search-page-list-title'>Hosts In {this.props.city}</h1>
               <ul>
                 {hostsList}
               </ul>
