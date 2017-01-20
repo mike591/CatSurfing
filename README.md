@@ -1,6 +1,6 @@
 # CatSurfing
 
-[CatSurfing](catsurfing.club) is a website that allows users to let their cats go on vacation.
+[CatSurfing](http://www.catsurfing.club) is a website that allows users to let their cats go on vacation.
 
 ## Features & Implementation
 
