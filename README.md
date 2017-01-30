@@ -8,13 +8,29 @@
 
 ![Guest signin example](docs/screenshots/signin.png)
 
+Pass in login dispatch function to props.
+
+![Guest signin code1](docs/screenshots/guest_code1.png)
+
+Set onClick listener on Guest button to call handleGuest.
+
+![Guest signin code2](docs/screenshots/guest_code2.png)
+
 Visitors can easily demo the site through a guest account button. This button sets the form state to the credentials of a demo account and logs the guest in.
 
 ### Search and Google Maps
 
-![Search and Google Maps example 1](docs/screenshots/search_and_maps.png)
+![Search and Google Maps example](docs/screenshots/search_and_maps.png)
 
-![Search and Google Maps example 2](docs/screenshots/search_and_maps2.png)
+![Search and Google Maps example](docs/screenshots/search_and_maps2.png)
+
+Store map, markers and infowindows to reduce redundancy.
+
+![Search and Google Maps example](docs/screenshots/search_code1.png)
+
+Add checks to fix bug where map would list and map would not reload when pressing the back button on browser.
+
+![Search and Google Maps example](docs/screenshots/search_code2.png)
 Visitors can use the search bar to search for hosts in a specific location. Search bar will auto complete to valid addresses.
 
 ### Bookings
