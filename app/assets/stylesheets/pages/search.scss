@@ -25,9 +25,10 @@
   padding: 30px;
   width: 100%;
   min-width: 400px;
-  height: 80%;
+  height: 75%;
   background-color: white;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   border-bottom: 1px solid $color1;
 }
 
@@ -98,6 +99,7 @@
 // RIGHT
 .search-page-right {
   width: 60%;
+  height: 97%;
 }
 
 .marker-info {
