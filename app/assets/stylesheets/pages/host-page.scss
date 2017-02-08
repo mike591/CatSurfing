@@ -29,7 +29,6 @@
 .host-profile {
   margin: 20px;
   padding: 20px;
-  height: 40%;
   min-height: 325px;
   background-color: white;
   text-align: center;
@@ -63,7 +62,6 @@
 .host-schedule {
   text-align: center;
   padding: 20px;
-  height: 30%;
   min-height: 200px;
   background-color: white;
   margin-bottom: 20px;
@@ -135,9 +133,7 @@
 }
 
 .host-overview {
-  overflow-y: scroll;
   padding: 20px;
-  height: 17%;
   background-color: white;
   margin-bottom: 20px;
   border-bottom: 2px solid $color1;
@@ -229,9 +225,7 @@
 
 
 .host-about {
-  overflow-y: scroll;
   padding: 20px;
-  height: 17%;
   background-color: white;
   margin-bottom: 20px;
   border-bottom: 2px solid $color1;

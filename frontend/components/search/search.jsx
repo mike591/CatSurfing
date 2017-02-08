@@ -92,7 +92,7 @@ class Search extends React.Component {
 
       let latlng = {lat: marker.position.lat(), lng: marker.position.lng()}
       let contentString = `<div className="marker-info" style="width: auto;
-      height: 50px;"><h1 style="font-size: 20px;">${host.username}</h1><br/><h2
+      height: auto;"><h1 style="font-size: 20px;">${host.username}</h1><br/><h2
       style="text-align: center;">${host.address}</h2></div>`;
 
 

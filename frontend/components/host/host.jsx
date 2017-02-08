@@ -29,10 +29,6 @@ class Host extends React.Component {
     this.props.getCats()
   }
 
-  componentWillUpdate(nextProps){
-
-  }
-
   handleCreateBooking(e) {
     e.preventDefault();
     let cat = this.state;
