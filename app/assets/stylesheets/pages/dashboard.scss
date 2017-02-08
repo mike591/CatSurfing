@@ -1,5 +1,6 @@
 .dashboard {
   height: inherit;
+  min-width: 1200px;
 }
 
 .dashboard-content {
@@ -29,6 +30,12 @@
   height: 100%;
 }
 
+.dashboard-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .dashboard-profile {
   margin: 20px;
   padding: 20px;
@@ -36,6 +43,15 @@
   min-height: 150px;
   background-color: white;
   border-bottom: 2px solid $color1;
+}
+
+.dashboard-img {
+  height: 150px;
+  width: 150px;
+  margin-bottom: 20px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .dashboard-profile-details {
@@ -51,6 +67,10 @@
   width: 100%;
   margin-top: 50px;
   outline: none;
+}
+
+.dashboard-status:hover {
+  cursor: pointer;
 }
 
 .dashboard-cats {
@@ -139,6 +159,20 @@
   border-bottom: 2px solid $color1;
 }
 
+.dashboard-host-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.dashboard-host-img {
+  height: 100px;
+  width: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .dashboard-plans > ul {
   display: flex;
   flex-direction: column;
@@ -167,10 +201,23 @@
   cursor: pointer;
 }
 
+.dashboard-guest-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.dashboard-guest-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+}
+
 .dashboard-guests {
   padding: 20px;
   margin: 20px;
-  height: 40%;
   background-color: white;
   border-bottom: 2px solid $color1;
 }

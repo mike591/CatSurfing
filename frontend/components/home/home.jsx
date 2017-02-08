@@ -39,7 +39,7 @@ class Home extends React.Component {
           <ul className='nav-list'>
             <li className="button" onClick={this.nav('/login')}>Login</li>
             <li className="button" onClick={this.nav('/signup')}>Sign Up</li>
-            <li className="button" onClick={this.handleGuest}>Guests</li>
+            <li className="button" onClick={this.handleGuest}>Guest Login</li>
           </ul>
         </div>
 
@@ -49,7 +49,7 @@ class Home extends React.Component {
             <ul>
               <li className="main-button" onClick={this.nav('/login')}>Login</li>
               <li className="main-button" onClick={this.nav('/signup')}>Sign Up</li>
-              <li className="main-button" onClick={this.handleGuest}>Guests</li>
+              <li className="main-button" onClick={this.handleGuest}>Guest Login</li>
             </ul>
           </div>
         </div>

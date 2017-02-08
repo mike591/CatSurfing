@@ -22,6 +22,12 @@ class SessionForm extends React.Component {
     this.nav = this.nav.bind(this);
   }
 
+  componentWillReceiveProps(props) {
+    if (props.formType != this.props.formType) {
+      this.removeErrors();
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
@@ -79,7 +85,7 @@ class SessionForm extends React.Component {
           <ul className='nav-list'>
             <li className="button" onClick={this.nav('/login')}>Login</li>
             <li className="button" onClick={this.nav('/signup')}>Sign Up</li>
-            <li className="button" onClick={this.handleGuest}>Guests</li>
+            <li className="button" onClick={this.handleGuest}>Guest Login</li>
           </ul>
         </div>
 

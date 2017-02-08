@@ -52,11 +52,22 @@ class Dashboard extends React.Component {
     if (cats.length > 0) {
       cats.forEach((cat) => {
         cat.bookings.forEach((booking) => {
+
+          let hostImgStyle = {
+            backgroundImage: `url(/assets/user${booking.host_id%50}.png)`,
+          };
+
           catBookings.push (
             <li key={booking.id} onClick={this.handleNavToHost(booking.host_id)}>
-              <h1 className='dashboard-name'>{cat.name}</h1>
-              <h2 className='dashboard-booking-details'>Staying with: {booking.host_name}</h2>
-              <h2 className='dashboard-booking-details'>From: {booking.start} --- To: {booking.end}</h2>
+              <div className='dashboard-host-info'>
+                <div className='dashboard-host-img' style={hostImgStyle}></div>
+                <div className='dashboard-host-detail'>
+                  <h1 className='dashboard-name'>{cat.name}</h1>
+                  <h2 className='dashboard-booking-details'>Staying with: {booking.host_name}</h2>
+                  <h2 className='dashboard-booking-details'>From: {booking.start} --- To: {booking.end}</h2>
+                </div>
+              </div>
+
               <button className='form-button-danger' onClick={this.handleDeleteBooking(booking.id)}>Delete Booking</button>
             </li>
           )
@@ -69,11 +80,21 @@ class Dashboard extends React.Component {
     let guests = []
     if (currentUser.bookings.length > 0) {
       currentUser.bookings.reverse().forEach((booking) => {
+
+        let guestImgStyle = {
+          backgroundImage: `url(/assets/cat${booking.cat_id%20}.jpeg)`,
+        };
+
         guests.push (
           <li key={booking.id}>
-            <h1 className='dashboard-name'>{booking.cat_name}</h1>
-            <h2 className='dashboard-booking-details'>From: {booking.start} --- To: {booking.end}</h2>
-            <h2 className='dashboard-booking-details'>{booking.owner_email}</h2>
+            <div className='dashboard-guest-container'>
+              <div className='dashboard-guest-img' style={guestImgStyle}></div>
+              <div className='dashboard-guest-info'>
+                <h1 className='dashboard-name'>{booking.cat_name}</h1>
+                <h2 className='dashboard-booking-details'>From: {booking.start} --- To: {booking.end}</h2>
+                <h2 className='dashboard-booking-details'>{booking.owner_email}</h2>
+              </div>
+            </div>
           </li>
         )
       })
@@ -82,6 +103,10 @@ class Dashboard extends React.Component {
         <li key={-1}>You have no upcoming guests :(</li>
       )
     }
+
+    let profileStyle = {
+      backgroundImage: `url(/assets/user${currentUser.id%50}.png)`,
+    };
 
     return(
       <div className='dashboard'>
@@ -94,7 +119,11 @@ class Dashboard extends React.Component {
             <div className='dashboard-profile'>
               <h1 className='dashboard-title'>{currentUser.username}</h1>
 
-              <h2 className='dashboard-profile-details'>{address}</h2>
+              <div className='dashboard-profile-container'>
+                <div className='dashboard-img' style={profileStyle}></div>
+                <h2 className='dashboard-profile-details'>{address}</h2>
+              </div>
+
               <select onChange={this.handleStatus} className='dashboard-status' value={status}>
                 <option value="Accepting Guests">Accepting Guests</option>
                 <option value="Maybe Accepting Guests">Maybe Accepting Guests</option>
