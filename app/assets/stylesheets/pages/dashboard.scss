@@ -58,14 +58,16 @@
   padding: 20px;
   background-color: white;
   border-bottom: 2px solid $color1;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 50%;
 }
 
 .catlist {
+  justify-content: space-between;
+  margin: 5px;
+  height: 150px;
   transition: background-color .2s;
   padding: 10px;
+  text-align: center;
+  display: flex;
   color: $color6;
   border-bottom: 2px solid $color1;
 }
@@ -74,8 +76,31 @@
   background-color: $color3;
 }
 
+.cat_info_container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  width: 40%;
+  vertical-align: -webkit-baseline-middle;
+}
+
+.catlist_img {
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
 .catlist-detail {
+  text-align: center;
+  width: 100%;
   padding-bottom: 5px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .dashboard-catForm {
@@ -110,9 +135,7 @@
 .dashboard-plans {
   padding: 20px;
   margin: 20px;
-  height: 35%;
   background-color: white;
-  overflow-y: scroll;
   border-bottom: 2px solid $color1;
 }
 
@@ -149,7 +172,6 @@
   margin: 20px;
   height: 40%;
   background-color: white;
-  overflow-y: scroll;
   border-bottom: 2px solid $color1;
 }
 

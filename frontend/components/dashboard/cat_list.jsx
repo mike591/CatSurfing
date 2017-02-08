@@ -52,15 +52,26 @@ class CatList extends React.Component {
     let cats;
     let catKeys = Object.keys(this.props.cats);
     if (catKeys.length > 0) {
-      cats = catKeys.map((key) => (
+      cats = catKeys.map((key) => {
+        let catStyle = {
+          backgroundImage: `url(/assets/cat${key%20}.jpeg)`,
+        };
+
+        return (
         <li className='catlist' key={key}>
-          <h1 className='catlist-detail'>
-            <span>Name: </span>{this.props.cats[key].name}
-          </h1>
-          <p className='catlist-detail'><span>Description: </span>{this.props.cats[key].description}</p>
-          <button className='form-button-danger' onClick={this.deleteCat(key)}>Delete</button>
+          <div className='catlist_img' style={catStyle}></div>
+          <div className='cat_info_container'>
+
+            <div className='catlist-detail'>
+              <h1>
+                <span>Name: </span>{this.props.cats[key].name}
+              </h1>
+              <p><span>Description: </span>{this.props.cats[key].description}</p>
+            </div>
+            <button className='form-button-danger' onClick={this.deleteCat(key)}>Delete</button>
+          </div>
         </li>
-      ))
+      )})
     }
 
     return (
