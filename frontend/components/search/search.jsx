@@ -22,23 +22,6 @@ class Search extends React.Component {
     this.getHostsAndMarkers(this.props.city);
   }
 
-  getHostsAndMarkers(city) {
-    this.props.getHosts(city).then((res) => {
-      let markers = [];
-      Object.values(res.hosts).forEach((host) => {
-        let latlng = {lat: host.latitude, lng: host.longitude};
-
-        let marker = new google.maps.Marker({
-          position: latlng,
-          clickable: false
-        });
-
-        markers.push(marker);
-      })
-      this.setState({markers: markers});
-    });
-  }
-
   componentDidMount() {
     this.initMap(this.props.city);
   }
@@ -48,8 +31,46 @@ class Search extends React.Component {
     if (this.props.city !== query[0]) {
       this.getHostsAndMarkers(query[0]);
     }
-
     this.initMap(query[0]);
+  }
+
+  getHostsAndMarkers(city) {
+    this.props.getHosts(city).then((res) => {
+      let markers = [];
+      Object.values(res.hosts).forEach((host) => {
+        let latlng = {lat: host.latitude, lng: host.longitude};
+
+        let marker = new google.maps.Marker({
+          position: latlng,
+        });
+
+        let contentString = `
+        <div className="marker-info" style="width: auto; height: auto; text-align: center;">
+        <h1 style="font-size: 20px;">${host.username}</h1><br/>
+        <h2 style="text-align: center;">${host.address}</h2>
+        <a style="color: blue;" href="http://www.catsurfing.club/#/host/${host.id}">Host's Profile</a>
+        </div>`;
+
+        let infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        marker.addListener('click', () => {
+          let openedWindow = this.state.openedWindow;
+          if (openedWindow !== null) {
+            openedWindow.close();
+          }
+
+          infowindow.open(map, marker);
+
+          this.setState({openedWindow: infowindow});
+        });
+
+        markers.push(marker);
+
+      })
+      this.setState({markers: markers});
+    });
   }
 
   initMap(city) {
