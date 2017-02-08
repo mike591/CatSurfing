@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../header/header_container';
 import {hashHistory} from 'react-router'
 import HostProfile from './host_profile'
+import ReactStars from 'react-stars'
 
 
 class Host extends React.Component {
@@ -13,7 +14,7 @@ class Host extends React.Component {
       start: '',
       end: '',
       bookingErrors: '',
-      rating: 1,
+      rating: 0,
       review: '',
       reviewErrors: ''
     }
@@ -22,6 +23,7 @@ class Host extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleCreateReview = this.handleCreateReview.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.ratingChanged = this.ratingChanged.bind(this);
   }
 
   componentWillMount(){
@@ -53,12 +55,12 @@ class Host extends React.Component {
     let review = {
       user_id: this.props.currentUser.id,
       host_id: this.props.host_id,
-      rating: parseInt(document.querySelector('input[name="rating"]:checked').value),
+      rating: this.state.rating,
       review: this.state.review
     }
     this.props.createReview(review).then(() => (
       this.setState ({
-        rating: 1,
+        rating: 0,
         review: ''
       })
     ), (err) => (
@@ -79,6 +81,10 @@ class Host extends React.Component {
       e.preventDefault();
       this.props.deleteReview(id);
     }
+  }
+
+  ratingChanged(newRating) {
+    this.setState({rating: newRating})
   }
 
   render() {
@@ -115,7 +121,6 @@ class Host extends React.Component {
           }
         }
 
-
         reviewList.push (
           <li className='review-list' key={review.id}>
             <h1>{stars}</h1>
@@ -126,25 +131,18 @@ class Host extends React.Component {
       })
     }
 
-    let starContainer = [];
-    for (let i = 1; i <= 5; i++) {
-      if (this.state.rating === i) {
-        starContainer.push(
-          <input key={i} className='star-radio' type="radio" name="rating" value={i} defaultChecked={true}/>
-        )
-      } else {
-        starContainer.push(
-          <input key={i} className='star-radio' type="radio" name="rating" value={i} defaultChecked={false}/>
-        )
-      }
-    }
-
     let reviewForm = <div></div>
     if (!reviewed) {
       reviewForm = (
         <form className='host-review-form' onSubmit={this.handleCreateReview}>
           <div className='star-container'>
-            {starContainer}
+            <ReactStars
+              count={5}
+              value={this.state.rating}
+              onChange={this.ratingChanged}
+              size={24}
+              half={false}
+              color2={'#ffd700'} />
           </div>
           <br></br>
           <textarea onChange={this.handleChange('review')} placeholder='Type review here' value={this.state.review}/>

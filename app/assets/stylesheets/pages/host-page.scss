@@ -58,10 +58,10 @@
   border-bottom: 1px solid $color1;
 }
 
-.host-profile > h2:last-child {
+.host-profile-status {
   border-bottom: none;
   padding-top: 10px;
-  margin-top: 25%;
+  margin-top: 25px;
 }
 
 // RIGHT
@@ -157,6 +157,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
 }
 
 .host-review-form > input {
@@ -212,31 +213,15 @@
   cursor: pointer;
 }
 
+.star-container > div {
+  display: flex;
+  justify-content: center;
+}
+
 .stars {
   font-weight: bolder;
   color: orangered;
 }
-
-.star-radio {
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
-  width: 27px;
-  height: 27px;
-  background-image: url(../assets/stars.png);
-  vertical-align: bottom;
-}
-
-.star-radio:checked {
-  background-position: 30px 30px;
-}
-
-
-.star-radio:hover {
-  border-bottom: 2px solid $color2;
-  cursor: pointer;
-}
-
 
 .host-about {
   padding: 20px;
