@@ -44,7 +44,7 @@ class Dashboard extends React.Component {
     }
 
     let currentUser = this.props.currentUser;
-    let address = `${currentUser.city}, ${currentUser.state}, ${currentUser.zip}`;
+    let address = `${currentUser.city} ${currentUser.state}, ${currentUser.zip}`;
     let status = currentUser.status;
     let cats = Object.values(this.props.cats);
 
